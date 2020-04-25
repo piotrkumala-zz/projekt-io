@@ -25,7 +25,7 @@ https://github.com/piotrkumala/projekt-io
 
 ### Tomasz Praszkiewicz (developer)
 1. Stworzenie aplikacji klienckiej - wykonane w 100%
-1. Stworzenie pierwszego komponentu pobierającego dane z serwera
+1. Stworzenie pierwszego komponentu pobierającego dane z serwera - wykonane w 100%
 
 ### Dawid Górka (tester)
 1. Określenie test casów na podstawie use casów - wykonane w 100%
