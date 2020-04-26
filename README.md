@@ -17,6 +17,7 @@ Project is done for university course of Software Engineering.
 - feature - adds new feature, should contain feature description in branch name
 - release - leaves specific application version to be released, should contain version number in branch name
 - hotfix - Bug fix on release branch, should contain version number and bug description in branch name
+- project - adding application design files (use-case diagrams, sprint reports, erd, dfd diagrams)
 - config - maintenance work on repo, README updates, etc.
 
 
