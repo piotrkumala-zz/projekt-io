@@ -11,12 +11,12 @@ https://github.com/piotrkumala/projekt-io
 1. Określenie przepływu danych w aplikacji z uwzględnienem cachowania - wykonane w 100%, nie wrzucane nigdzie
 
 ### Patryk Chodur (application architect)
-1. Określenie środowiska w którym ma działać serwer 
-1. Określenie sposobu autoryzacji w aplikacji
+1. Określenie środowiska w którym ma działać serwer - wykonane w 50% - potrzebna finalizacja
+1. Określenie sposobu autoryzacji w aplikacji - wykonane w 100% - nie wrzucane nigdzie
 
 ### Leszek Lorens (database architect)
 1. Implementacja bazy postgresowej - wykonane w 100% - baza stoi w chmurze ElephantSQL
-1. Stworzenie diagramów dfd i erd - 
+1. Stworzenie diagramów dfd i erd - wykonane w 100% - zawarte w repo githubowym
 
 ### Maciej Domagalski (developer)
 1. Postawienie serwera - odalający sie serwer wystawiający restowe api - wykonane w 100% - zawarte w repo githubowym
@@ -25,7 +25,7 @@ https://github.com/piotrkumala/projekt-io
 
 ### Tomasz Praszkiewicz (developer)
 1. Stworzenie aplikacji klienckiej - wykonane w 100%
-1. Stworzenie pierwszego komponentu pobierającego dane z serwera - wykonane w 100%
+1. Stworzenie pierwszego komponentu pobierającego dane z serwera - wykonane w 100% 
 
 ### Dawid Górka (tester)
 1. Określenie test casów na podstawie use casów - wykonane w 100%
