@@ -24,8 +24,8 @@ https://github.com/piotrkumala/projekt-io
 1. Implementacja systemu autoryzacji - wykonane w 100% - zawarte w repo githubowym
 
 ### Tomasz Praszkiewicz (developer)
-1. Stworzenie aplikacji klienckiej - wykonane w 100%
-1. Stworzenie pierwszego komponentu pobierającego dane z serwera - wykonane w 100% 
+1. Stworzenie aplikacji klienckiej - wykonane w 100% - zawarte w repo githubowym
+1. Stworzenie pierwszego komponentu pobierającego dane z serwera - wykonane w 100% - zawarte w repo githubowym
 
 ### Dawid Górka (tester)
 1. Określenie test casów na podstawie use casów - wykonane w 100%
