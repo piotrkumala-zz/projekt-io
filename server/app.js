@@ -17,4 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+let UserController = require('./user/UserController');
+app.use('/auth', UserController);
+
+let AuthController = require('./auth/AuthController');
+app.use('/auth', AuthController);
+
 module.exports = app;
