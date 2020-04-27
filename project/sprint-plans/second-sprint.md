@@ -11,20 +11,20 @@
 ## Zadania do zrobienia:
 
 1. Baza danych:
-    - Zbudowanie ostatecznej wersji bazy
+    - Zbudowanie ostatecznej wersji bazy - Leszek Lorens
 1. Architektura:
-    - Określenie sposobu pisania aplikacji (wzorce projektowe, paradygm programowania, itp)
-    - Wsparcie zespołu programistycznego
+    - Określenie sposobu pisania aplikacji (wzorce projektowe, paradygm programowania, itp) - Patryk Chodur
+    - Wsparcie zespołu programistycznego - Patryk Chodur
 1. Projekt UX/UI:
-    - Stworzenie ostatecznego mockupu
-    - Stworzenie ostatecznego pełnego wyglądu 
+    - Stworzenie ostatecznego mockupu - Leszek Lorens
+    - Stworzenie ostatecznego pełnego wyglądu - Patryk Chodur
 1. Programowanie:
-    - Implementacja systemu do autoryzacji na froncie (logowanie, zapomniałem hasła, rejestracja itd)
-    - Implementacja restowego api do systemu autoryzacji
-    - Implementacja restowego api do modułu diety
-    - Implementacj restowego api do modułu rzucania palenia
-    - Implementacja reactowego komponentu do modułu rzucania palenia
-    - Implementacja reactowego komponentu do modułu diety
+    - Implementacja restowego api do systemu autoryzacji - Maciej Domagalski
+    - Implementacja restowego api do modułu diety - Piotr Kumala
+    - Implementacja restowego api do modułu rzucania palenia - Tomasz Praszkiewicz
+    - Implementacja systemu do autoryzacji na froncie (logowanie, zapomniałem hasła, rejestracja itd) - Maciej Domagalski
+    - Implementacja reactowego komponentu do modułu rzucania palenia - Tomasz Praszkiewicz
+    - Implementacja reactowego komponentu do modułu diety - Piotr Kumala
 1. Testowanie:
-    - Tworzenie testów do zadań zrobionych przez programistóœ
-    - Testowanie nowych funkcjonalności na bieżąco 
+    - Tworzenie testów do zadań zrobionych przez programistów - Dawid Górka
+    - Testowanie nowych funkcjonalności na bieżąco - Dawid Górka
