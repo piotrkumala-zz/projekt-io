@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var dietRouter = require("./routes/diet")
 
 var app = express();
 
@@ -22,5 +23,7 @@ app.use('/auth', UserController);
 
 let AuthController = require('./auth/AuthController');
 app.use('/auth', AuthController);
+
+app.use('/diet', dietRouter)
 
 module.exports = app;
