@@ -62,7 +62,7 @@ const User = {
 			if(!rows[0]){
 				return res.status(400).send({'message': 'Nie ma takiego użytkownika'});
 			}
-			if(!Helper.comparePassword(rows[0].password, req.body.password)) {
+			if(!Helper.comparePassword(rows[0].haslo, req.body.password)) {
 				return res.status(400).send({ 'message': 'Nieprawidłowe hasło' });
 			}
 			const token = Helper.generateToken(rows[0].email);
