@@ -36,3 +36,5 @@ jobs:
         run: npm test
     env:
       CI: true
+      SECRET: secretwhatever
+      DATABASE_URL: postgres://nviwmkcg:4-G6tFZ1xeDNz_W6f9C-qWQTJo8sq6Ww@drona.db.elephantsql.com:5432/nviwmkcg
