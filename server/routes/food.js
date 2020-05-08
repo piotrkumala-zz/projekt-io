@@ -49,14 +49,32 @@ router.post('/add', async (req, res, next)=>{
         });
     else{
         try{
-            const query = {
-                text: 'INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy) VALUES($1, $2, $3, $4, $5, $6, $7)',
-                values: [req.body.name, req.body.countable, req.body.calories, req.body.fat, req.body.protein, req.body.sugar, 'f']
-            } 
-            console.log(query)
             const result = await pool.query('INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy) VALUES($1, $2, $3, $4, $5, $6, $7)',
             [req.body.name, req.body.countable, req.body.calories, req.body.fat, req.body.protein, req.body.sugar, 'f']);
+            res.json({
+                error: false,
+                message: result.rowCount + ' rows affected'
+            })
+        }
+        catch (e){
+            res.json({
+                error: true,
+                message: e
+            })
+        }
+    }
+})
 
+router.post('/update', async (req, res, next)=>{
+    if(!req.body)
+        res.json({
+            error: true,
+            message: 'body is empty'
+        });
+    else{
+        try{
+            const result = await pool.query('UPDATE Jedzenie SET nazwa = $1,policzalne = $2,kalorie = $3,tluszcz =$4,białko =$5,cukry =$6 WHERE nazwa = $1',
+            [req.body.name, req.body.countable, req.body.calories, req.body.fat, req.body.protein, req.body.sugar]);
             res.json({
                 error: false,
                 message: result.rowCount + ' rows affected'
