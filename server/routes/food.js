@@ -34,13 +34,14 @@ router.post('/delete', async (req, res, next)=>{
         catch (e){
             res.json({
                 error: true,
-                message: e
+                message: e.detail
             })
         }
     }
 })
 
 router.post('/add', async (req, res, next)=>{
+    console.log(Object.values(req.body).length)
     if(Object.values(req.body).every(x => x == null))
         res.json({
             error: true,
@@ -58,7 +59,7 @@ router.post('/add', async (req, res, next)=>{
         catch (e){
             res.json({
                 error: true,
-                message: e
+                message: e.detail
             })
         }
     }
@@ -82,7 +83,7 @@ router.post('/update', async (req, res, next)=>{
         catch (e){
             res.json({
                 error: true,
-                message: e
+                message: e.detail
             })
         }
     }
