@@ -6,8 +6,9 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var foodRouter = require("./routes/food")
-
+var foodRouter = require("./routes/food");
+var recipeRouter = require("./routes/recipe");
+var portionRouter = require("./routes/portion");
 var app = express();
 
 app.use(logger('dev'));
@@ -26,6 +27,10 @@ app.use('/auth', UserController);
 let AuthController = require('./auth/AuthController');
 app.use('/auth', AuthController);
 
-app.use('/food', foodRouter)
+app.use('/food', foodRouter);
+
+app.use('/recipe', recipeRouter);
+
+app.use('/portion', portionRouter);
 
 module.exports = app;

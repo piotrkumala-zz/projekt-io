@@ -13,13 +13,11 @@ const pool = new pg.Pool({
 
 
 router.get('/',async (req,res,next) =>{
-    console.log(req.query.name)
     let response= req.query.name != null ? await pool.query('SELECT * FROM jedzenie WHERE nazwa = $1', [req.query.name]) : await pool.query('SELECT * FROM jedzenie')
     res.json(response.rows);
 })
 
 router.post('/delete', async (req, res, next)=>{
-    console.log(req.body)
     if(!req.body.name)
         res.json( {
             error: true,
