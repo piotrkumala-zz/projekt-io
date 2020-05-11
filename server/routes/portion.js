@@ -13,7 +13,14 @@ const pool = new pg.Pool({
 
 
 router.get('/',async (req,res,next) =>{
-    let response= req.query.id != null ? await pool.query('SELECT * FROM porcja WHERE porcja_id = $1', [req.query.id]) : await pool.query('SELECT * FROM porcja')
+    if(req.query.id != null && req.query.type == null)
+        res.json({
+            error: true,
+            message: "no portion type specified"
+        })
+    let response= req.query.id != null && req.query.type ? 
+        await pool.query('SELECT * FROM porcja WHERE porcja_id = $1 AND rodzaj = $2', [req.query.id, req.query.type]) : 
+        await pool.query('SELECT * FROM porcja')
     res.json(response.rows);
 })
 router.post('/delete', async (req, res, next)=>{
