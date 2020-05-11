@@ -6,9 +6,10 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var foodRouter = require("./routes/food");
-var recipeRouter = require("./routes/recipe");
-var portionRouter = require("./routes/portion");
+var foodRouter = require('./routes/food');
+var recipeRouter = require('./routes/recipe');
+var portionRouter = require('./routes/portion');
+var mealRouter = require('./routes/meal')
 var app = express();
 
 app.use(logger('dev'));
@@ -32,5 +33,7 @@ app.use('/food', foodRouter);
 app.use('/recipe', recipeRouter);
 
 app.use('/portion', portionRouter);
+
+app.use('/meal', mealRouter);
 
 module.exports = app;

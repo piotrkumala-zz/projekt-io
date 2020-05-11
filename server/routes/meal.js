@@ -13,7 +13,7 @@ const pool = new pg.Pool({
 
 
 router.get('/',async (req,res,next) =>{
-    let response= req.query.id != null ? await pool.query('SELECT * FROM przepis WHERE porcja_id = $1', [req.query.id]) : await pool.query('SELECT * FROM przepis')
+    let response= req.query.id != null ? await pool.query('SELECT * FROM posiłek WHERE porcja_id = $1', [req.query.id]) : await pool.query('SELECT * FROM posiłek')
     res.json(response.rows);
 })
 
@@ -25,7 +25,7 @@ router.post('/delete', async (req, res, next)=>{
         });
     else{
         try{
-            const result = await pool.query('DELETE FROM Przepis WHERE porcja_id = $1', [req.body.id])
+            const result = await pool.query('DELETE FROM posiłek WHERE porcja_id = $1', [req.body.id])
             res.json({
                 error: false,
                 message: result.rowCount + ' rows affected'
@@ -48,8 +48,8 @@ router.post('/add', async (req, res, next) =>{
         });
     else{
         try{
-            const result = await pool.query('INSERT INTO Przepis(nazwa, pora_dnia, opis, porcja_id, z_bazy) VALUES($1, $2, $3, $4, $5)',
-            [req.body.name, req.body.dayTime, req.body.description, req.body.id, 'f']);
+            const result = await pool.query('INSERT INTO posiłek(email, dzien, pora_dnia, porcja_id) VALUES($1, $2, $3, $4)',
+            [req.body.email, req.body.day, req.body.dayTime, req.body.id]);
             res.json({
                 error: false,
                 message: result.rowCount + ' rows affected'
@@ -72,8 +72,8 @@ router.post('/update', async (req, res, next)=>{
         });
     else{
         try{
-            const result = await pool.query('UPDATE Przepis SET nazwa = $1, pora_dnia = $2, opis = $3, porcja_id = $4, z_bazy = $5 WHERE porcja_id=$4',
-            [req.body.name, req.body.dayTime, req.body.description, req.body.id, 'f']);
+            const result = await pool.query('UPDATE posiłek SET email = $1, dzien = $2, pora_dnia = $3, porcja_id = $4 WHERE porcja_id =$4',
+            [req.body.email, req.body.day, req.body.dayTime, req.body.id]);
             res.json({
                 error: false,
                 message: result.rowCount + ' rows affected'
