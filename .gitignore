@@ -103,6 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
+# test user passwords
+hasla.txt
 # MacOS Spotlight files
 .DS_Store
 

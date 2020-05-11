@@ -16,7 +16,9 @@
     "mongoose": "^5.9.12",
     "morgan": "~1.9.1",
     "pg": "^8.0.3",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "dotenv": "^8.2.0",
+    "make-runnable": "^1.0.1"
   },
   "devDependencies": {
     "jest": "^25.5.4",
