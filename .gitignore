@@ -105,3 +105,11 @@ dist
 
 # test user passwords
 hasla.txt
+# MacOS Spotlight files
+.DS_Store
+
+# Expo
+.expo
+
+# IDE files
+.idea
