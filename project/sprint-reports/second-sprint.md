@@ -22,5 +22,5 @@ https://github.com/piotrkumala/projekt-io
 - Implementacja restowego api do modułu rzucania palenia - Tomasz Praszkiewicz - 0%
 - Implementacja reactowego komponentu do modułu rzucania palenia - Tomasz Praszkiewicz - 0%
 ### Dawid Górka (tester)
-    - Tworzenie testów do zadań zrobionych przez programistów - Dawid Górka - 0%
-    - Testowanie nowych funkcjonalności na bieżąco - Dawid Górka - 0%
+- Tworzenie testów do zadań zrobionych przez programistów - Dawid Górka - 0%
+- Testowanie nowych funkcjonalności na bieżąco - Dawid Górka - 0%
