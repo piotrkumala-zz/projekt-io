@@ -1,44 +1,78 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ListView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-
+import { SearchBar, Icon, Tooltip } from 'react-native-elements';
 
 const DietTables = props =>{
     const navigation = props.navigation;
-    const [data, setServer] = useState(null);
+    const [data, setData] = useState(null);
+    const [originalData, setOriginalData] = useState(null);
+    const [search, setSearch] = useState(
+        ''
+    );
+
     useEffect(()=>{
         const getData = async () =>{
-            const server = await fetch('http://192.168.0.24:3000/food');
-            const data = await server.json();
-            setServer(data)
+            const res = await fetch('http://192.168.0.24:3000/food');
+            const data = await res.json();
+            setOriginalData(data)
+            setData(data)
         }
         getData();
     }, [])
-    console.log(data)
-
+    console.log(originalData)
+    const filterData = (text) =>{
+        const newData = originalData.filter(item => item.nazwa.includes(text));
+        setData(newData)
+        setSearch(text)
+    }
     return(
-        <ScrollView>
-            <ScrollView horizontal = {true} contentContainerStyle = {{ flexDirection:'column'}}>
-            <View style ={styles.container} >
-                <Text style ={styles.header}>Nazwa:</Text>
-                <Text style = {styles.header}>Kalorie:</Text>
-                <Text style = {styles.header}>Tłuszcz:</Text>
-                <Text style = {styles.header}>Białko:</Text>
-                <Text style = {styles.header}>Cukry:</Text>
-            </View>
-                <FlatList
-                    data={data}
-                    renderItem={({item}) => 
-                    <View style={styles.container}>
-                        <Text style = {styles.item}>{item.nazwa}</Text>
-                        <Text style = {styles.item}>{item.kalorie}</Text>
-                        <Text style = {styles.item}>{item.tluszcz}</Text>
-                        <Text style = {styles.item}>{item.białko}</Text>
-                        <Text style = {styles.item}>{item.cukry}</Text>
-                    </View> }
+        <View>
+            <View>
+                <SearchBar 
+                placeholder = "Wyszukaj"
+                autoCorrect = {false}
+                onChangeText = {text => filterData(text)}
+                lightTheme
+                value = {search}
+                round
+                platform = 'android'
                 />
+            </View>
+            <ScrollView>
+                <ScrollView horizontal = {true} contentContainerStyle = {{ flexDirection:'column'}}>
+                <View style ={styles.container} >
+                    <Text style ={styles.header}>Nazwa:</Text>
+                    <Text style = {styles.header}>Kalorie:</Text>
+                    <Text style = {styles.header}>Tłuszcz:</Text>
+                    <Text style = {styles.header}>Białko:</Text>
+                    <Text style = {styles.header}>Cukry:</Text>
+                </View>
+                    <FlatList
+                        keyExtractor = {(item) => item.nazwa}
+                        data={data}
+                        renderItem={({item}) => 
+                        <View style={styles.container}>
+                            <Text style = {styles.item}>{item.nazwa}</Text>
+                            <Text style = {styles.item}>{item.kalorie}</Text>
+                            <Text style = {styles.item}>{item.tluszcz}</Text>
+                            <Text style = {styles.item}>{item.białko}</Text>
+                            <Text style = {styles.item}>{item.cukry}</Text>
+                        </View> }
+                    />
+                </ScrollView>
             </ScrollView>
-        </ScrollView>
+            <View>
+            <TouchableOpacity  style = {{alignSelf: 'center'}} onPress={console.log('click')}> 
+                <Icon
+                    name='ios-add'
+                    type='ionicon'
+                    reverse
+                    color = 'grey'
+                />
+            </TouchableOpacity >
+            </View>
+        </View>
     )
 }
 
@@ -65,6 +99,9 @@ const styles = StyleSheet.create({
         flexShrink: 1,
         minWidth: 90
     },
+    button:{
+        alignSelf: 'center'
+    }
   })
   
 
