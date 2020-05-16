@@ -9,7 +9,7 @@
 1. Programowanie:
     - Implementacja restowego api do systemu autoryzacji - Maciej Domagalski - 100%
     - Implementacja restowego api do modułu diety - Piotr Kumala - 100%
-    - Implementacja restowego api do modułu rzucania palenia - Tomasz Praszkiewicz - 0%
+    - Implementacja restowego api do modułu rzucania palenia - Tomasz Praszkiewicz - 100%
     - Implementacja systemu do autoryzacji na froncie (logowanie, zapomniałem hasła, rejestracja itd) - Maciej Domagalski - 0%
     - Implementacja reactowego komponentu do modułu rzucania palenia - Tomasz Praszkiewicz - 0%
     - Implementacja reactowego komponentu do modułu diety - Piotr Kumala - 0%
