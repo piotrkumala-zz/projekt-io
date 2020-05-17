@@ -11,6 +11,9 @@
 ## Zadania do zrobienia:
 1. Baza danych:
     - Dodanie większej ilości dancyh
+1. Architektura:
+    - Dodanie CI do projektu frontu
+    - Wystawienie ostatecznej wersji serwera do chmury
 1. Programowanie:
     - Stworzenie ekranów do logowania/rejestracji/zapomniałem hasła.
     - Wpięcie mechanizmu autoryzacji
@@ -18,7 +21,5 @@
     - Stworzenie widoku posiłki
     - Stworzenie notatnika
     - Stworzenie modułu do rzucania palenia
+1. Testowanie:
     - Stworzenie testów do aplikacji
-    - Dodanie CI do projektu frontu
-    - Wystawienie ostatecznej wersji serwera do chmury
-    
