@@ -24,3 +24,4 @@ https://github.com/piotrkumala/projekt-io
 ### Dawid Górka (tester)
 - Tworzenie testów do zadań zrobionych przez programistów - wykonane w 0%
 - Testowanie nowych funkcjonalności na bieżąco - wykonane w 0%
+
