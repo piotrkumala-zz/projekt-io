@@ -23,4 +23,4 @@ https://github.com/piotrkumala/projekt-io
 - Implementacja reactowego komponentu do modułu rzucania palenia - wykonane w 0%
 ### Dawid Górka (tester)
 - Tworzenie testów do zadań zrobionych przez programistów - wykonane w 0%
-- Testowanie nowych funkcjonalności na bieżąco - wykonane w 0% 
+- Testowanie nowych funkcjonalności na bieżąco - wykonane w 0%
