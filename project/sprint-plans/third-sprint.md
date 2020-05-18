@@ -10,10 +10,12 @@
 
 ## Zadania do zrobienia:
 1. Baza danych:
-    - Dodanie większej ilości dancyh
+    - Dodanie większej ilości danych
+    - Stworzenie dokumentacji
 1. Architektura:
     - Dodanie CI do projektu frontu
     - Wystawienie ostatecznej wersji serwera do chmury
+    - Stworzenie dokumentacji serwera
 1. Programowanie:
     - Stworzenie ekranów do logowania/rejestracji/zapomniałem hasła.
     - Wpięcie mechanizmu autoryzacji
