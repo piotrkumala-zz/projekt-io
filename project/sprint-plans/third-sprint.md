@@ -23,3 +23,6 @@
     - Stworzenie modułu do rzucania palenia
 1. Testowanie:
     - Stworzenie testów do aplikacji
+
+1. Cuda i dziwy:
+    - Zrobienie wykresu stanu dla aplikacji.
