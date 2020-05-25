@@ -14,11 +14,17 @@ const InputBox = (props) => {
   const description = props.description;
   //const handler = props.handler;
 
+  const [value, onChangeText] = React.useState("");
+
   return (
     <View style={styles.view}>
-      <TouchableOpacity style={styles.button}>
-        <Text>{description}</Text>
-        <TextInput style={styles.text} />
+      <TouchableOpacity style={styles.input}>
+        <TextInput
+          placeholder={description}
+          style={styles.text}
+          onChangeText={(text) => onChangeText(text)}
+          value={value}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -29,11 +35,11 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     margin: 5,
   },
-  button: {
+  input: {
     backgroundColor: "#ddd",
     alignItems: "center",
     borderRadius: 25,
-    padding: 0,
+    padding: 10,
   },
   text: {
     fontSize: 24,
