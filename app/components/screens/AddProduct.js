@@ -19,7 +19,7 @@ const AddProduct = props =>{
     const fatLabel = 'Tłuszcz (g)';
     const proteinLabel = 'Białko (g)';
     const sugarLabel = 'Cukier (g)';
-    const confirmLabel = 'Zapisz';
+    const saveLabel = 'Zapisz';
 
     const filterNumbers = (text, setter) =>{
         const newText = text.replace(/[^0-9]/g,'')
@@ -80,7 +80,7 @@ const AddProduct = props =>{
             label = {sugarLabel}
             />
             <Button 
-            title = {confirmLabel}
+            title = {saveLabel}
             onPress = {saveHandler}/>
         </ScrollView>
     )
