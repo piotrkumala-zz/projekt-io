@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {View, Text} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import {Input, Button} from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -54,15 +54,17 @@ const AddProduct = props =>{
     }
 
     return (
-        <ScrollView>
+        <ScrollView style = {styles.container}>
             <Text>{errorMessage}</Text>
             <Input
             maxLength = {40}
             onChangeText = {text => setName(text)}
             placeholder = {nameLabel}
-            label ={nameLabel}/>
+            inputStyle = {styles.placeholder}
+            label ={nameLabel}
+            labelStyle= {styles.label}/>
 
-            <Text>{countableLabel}</Text>
+            <Text style= {styles.textLabel}>{countableLabel}</Text>
             <RNPickerSelect 
             selectedValue = {countable}
             onValueChange = {(itemValue) => setCountable(itemValue)}
@@ -70,44 +72,68 @@ const AddProduct = props =>{
                 { key: 't', label:'Tak', value:'t'},
                 { key: 'f', label:'Nie', value:'f'}
             ]}
-            placeholder = {{ label:countableLabel}}/>
+            placeholder = {{ label:countableLabel}}
+            inputStyle = {styles.placeholder}/>
 
             <Input
             maxLength={4}
             value={calories} 
             onChangeText = {text => filterNumbers(text, setCalories)}
             placeholder = {caloriesLabel}
+            inputStyle = {styles.placeholder}
             label = {caloriesLabel}
-            />
+            labelStyle= {styles.label}/>
 
             <Input
             maxLength={4}
             value={fat} 
             onChangeText = {text => filterNumbers(text, setFat)}
             placeholder = {fatLabel}
+            inputStyle = {styles.placeholder}
             label = {fatLabel}
-            />
+            labelStyle= {styles.label}/>
 
             <Input
             maxLength={4}
             value={protein} 
             onChangeText = {text => filterNumbers(text, setProtein)}
             placeholder = {proteinLabel}
+            inputStyle = {styles.placeholder}
             label = {proteinLabel}
-            />
+            labelStyle= {styles.label}/>
 
             <Input
             maxLength={4}
             value={sugar} 
             onChangeText = {text => filterNumbers(text, setSugar)}
             placeholder = {sugarLabel}
+            inputStyle = {styles.placeholder}
             label = {sugarLabel}
-            />
+            labelStyle= {styles.label}/>
             <Button 
             title = {saveLabel}
             onPress = {saveHandler}/>
         </ScrollView>
     )
+
 }
+const styles = StyleSheet.create({
+    container:{
+        margin:10
+    },
+    textLabel:{
+        fontSize: 16,
+        marginLeft: 8.5,
+        color: 'grey',
+        fontWeight: 'bold'
+    },
+    label: {
+        fontSize:16,
+        color: 'grey'
+    },
+    placeholder: {
+        fontSize:14
+    }
+  })
 
 export default AddProduct;
