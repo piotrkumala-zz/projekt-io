@@ -6,6 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 const AddProduct = props =>{
     const navigation = props.navigation;
 
+    const[errorMessage, setErrorMessage] = useState(null);
     const [name, setName] = useState('');
     const [countable, setCountable] = useState(null);
     const [calories, setCalories] = useState(null);
@@ -18,7 +19,7 @@ const AddProduct = props =>{
     const caloriesLabel = 'Kalorie';
     const fatLabel = 'Tłuszcz (g)';
     const proteinLabel = 'Białko (g)';
-    const sugarLabel = 'Cukier (g)';
+    const sugarLabel = 'Węglowodany (g)';
     const saveLabel = 'Zapisz';
 
     const filterNumbers = (text, setter) =>{
@@ -26,12 +27,35 @@ const AddProduct = props =>{
         setter(newText);
     }
     
-    const saveHandler = () =>{
-        console.log('Saving');
+    const saveHandler = async () =>{
+        const data = {
+            name:name,
+            countable:countable,
+            calories:calories,
+            fat:fat,
+            protein:protein,
+            sugar:sugar
+        }
+        console.log(data)
+        const res = await fetch('http://192.168.0.24:3000/food/add', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }            
+        })
+        const json = await res.json();
+        if(json.error === true){
+            setErrorMessage(json.message);
+        }
+        else{
+            navigation.push('DietTables');
+        }
     }
 
     return (
         <ScrollView>
+            <Text>{errorMessage}</Text>
             <Input
             maxLength = {40}
             onChangeText = {text => setName(text)}
