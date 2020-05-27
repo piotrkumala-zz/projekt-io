@@ -7,9 +7,7 @@ const DietTables = props =>{
     const navigation = props.navigation;
     const [data, setData] = useState(null);
     const [originalData, setOriginalData] = useState(null);
-    const [search, setSearch] = useState(
-        ''
-    );
+    const [search, setSearch] = useState('');
 
     useEffect(()=>{
         const getData = async () =>{
@@ -25,6 +23,10 @@ const DietTables = props =>{
         const newData = originalData.filter(item => item.nazwa.includes(text));
         setData(newData)
         setSearch(text)
+    }
+    const addProductHandler = ()=>{
+        if(data != null)
+            navigation.push('AddProduct')
     }
     return(
         <View>
@@ -63,14 +65,14 @@ const DietTables = props =>{
                 </ScrollView>
             </ScrollView>
             <View>
-            <TouchableOpacity  style = {{alignSelf: 'center'}} onPress={console.log('click')}> 
-                <Icon
-                    name='ios-add'
-                    type='ionicon'
-                    reverse
-                    color = 'grey'
-                />
-            </TouchableOpacity >
+                <TouchableOpacity  style = {styles.button} onPress={addProductHandler}> 
+                    <Icon
+                        name='ios-add'
+                        type='ionicon'
+                        reverse
+                        color = 'grey'
+                        />
+                </TouchableOpacity >
             </View>
         </View>
     )
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
         minWidth: 90
     },
     button:{
-        alignSelf: 'center'
+        alignSelf: 'center',
     }
   })
   
