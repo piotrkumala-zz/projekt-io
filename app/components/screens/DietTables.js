@@ -41,29 +41,31 @@ const DietTables = props =>{
                 platform = 'android'
                 />
             </View>
-            <ScrollView>
-                <ScrollView horizontal = {true} contentContainerStyle = {{ flexDirection:'column'}}>
-                <View style ={styles.container} >
-                    <Text style ={styles.header}>Nazwa:</Text>
-                    <Text style = {styles.header}>Kalorie:</Text>
-                    <Text style = {styles.header}>Tłuszcz:</Text>
-                    <Text style = {styles.header}>Białko:</Text>
-                    <Text style = {styles.header}>Cukry:</Text>
-                </View>
-                    <FlatList
-                        keyExtractor = {(item) => item.nazwa}
-                        data={data}
-                        renderItem={({item}) => 
-                        <View style={styles.container}>
-                            <Text style = {styles.item}>{item.nazwa}</Text>
-                            <Text style = {styles.item}>{item.kalorie}</Text>
-                            <Text style = {styles.item}>{item.tluszcz}</Text>
-                            <Text style = {styles.item}>{item.białko}</Text>
-                            <Text style = {styles.item}>{item.cukry}</Text>
-                        </View> }
-                    />
+            <View style = {{maxHeight:'75%'}}>
+                <ScrollView style={{flexGrow:0}}>
+                    <ScrollView horizontal = {true} contentContainerStyle = {{ flexDirection:'column'}}>
+                    <View style ={styles.container} >
+                        <Text style ={styles.header}>Nazwa:</Text>
+                        <Text style = {styles.header}>Kalorie:</Text>
+                        <Text style = {styles.header}>Tłuszcz:</Text>
+                        <Text style = {styles.header}>Białko:</Text>
+                        <Text style = {styles.header}>Cukry:</Text>
+                    </View>
+                        <FlatList
+                            keyExtractor = {(item) => item.nazwa}
+                            data={data}
+                            renderItem={({item}) => 
+                            <View style={styles.container}>
+                                <Text style = {styles.item}>{item.nazwa}</Text>
+                                <Text style = {styles.item}>{item.kalorie}</Text>
+                                <Text style = {styles.item}>{item.tluszcz}</Text>
+                                <Text style = {styles.item}>{item.białko}</Text>
+                                <Text style = {styles.item}>{item.cukry}</Text>
+                            </View> }
+                        />
+                    </ScrollView>
                 </ScrollView>
-            </ScrollView>
+            </View>
             <View>
                 <TouchableOpacity  style = {styles.button} onPress={addProductHandler}> 
                     <Icon
