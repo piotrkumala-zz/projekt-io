@@ -21,6 +21,7 @@ function DietMenu(props) {
 
 	// notepadButton
 	const notepadButtonHandler = () => {
+		navigation.push('NotesMenu')
 
 	};
 	const notepadButtonDescription = "Notatnik";
