@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Icon} from 'react-native-elements';
 
 const DietPlaner = props =>{
     const navigation = props.navigation;
@@ -68,18 +69,33 @@ const DietPlaner = props =>{
     return (
         <View style = {styles.container}>
             <View style = {styles.column}>
-            <FlatList
-                keyExtractor = {(item) => item.day}
-                extraData={selectedDay}
-                data={leftListData}
-                renderItem={({item}) => 
-                <TouchableOpacity style={styles.container} onPress = {()=>leftListHandler(item)} >
-                <Text style = {styles.item}>{item.day}</Text>
-                <Text style = {styles.item}>{item.calories}</Text>
-                </TouchableOpacity> }
-            />
+                <View style = {styles.centered}>
+                    <Icon
+                        name='calendar'
+                        type='font-awesome'                      
+                        color = 'grey'
+                    />
+                </View>
+                <FlatList
+                    keyExtractor = {(item) => item.day}
+                    extraData={selectedDay}
+                    data={leftListData}
+                    renderItem={({item}) => 
+                    <TouchableOpacity style={styles.container} onPress = {()=>leftListHandler(item)} >
+                    <Text style = {styles.item}>{item.day}</Text>
+                    <Text style = {styles.item}>{item.calories}</Text>
+                    </TouchableOpacity> }
+                />
             </View>
             <View style = {styles.column}>
+                <View style = {styles.centered}>
+                    <Icon
+                        name='list'
+                        type='font-awesome'        
+                        color = 'grey'
+
+                    />
+                </View>
                 <FlatList
                     keyExtractor = {(item) => item.name}
                     extraData = {selectedDay}
@@ -106,14 +122,21 @@ const styles = StyleSheet.create({
     },
     column:{
         width: '50%',
-        flexDirection:'column'
+        flexDirection:'column',
+        height: '100%',
     },
     item:{
-        width: '50%'
+        width: '60%'
     },
     smallItem:{
         width: '40%'
+    },
+    centered:{
+        alignSelf:'center',
+        margin: 10
     }
   })
 
 export default DietPlaner;
+
+
