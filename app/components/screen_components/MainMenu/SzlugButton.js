@@ -10,7 +10,7 @@ const SzlugButton = () => {
 	const szlugPressed = async () => {
 		console.log("UWAGA! Zapalono papieroska");
 		const data1 = {
-			email: 'set@gmail.com',
+			email: 'adam@gmail.com',
 			day: new Date(Date.now()).toISOString().replace('T', ' ').replace('Z', ''),
 			count: 1,
 			price: 1.1,

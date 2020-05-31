@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { SearchBar, Icon, Tooltip } from 'react-native-elements';
+import { StyleSheet, Text, View } from 'react-native';
+
 
 
 function GetData(props) {
@@ -9,7 +8,7 @@ function GetData(props) {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch('http://192.168.178.200:3000/smoke/sum?email=adam@gmail.com');
+            const res = await fetch('http://192.168.178.200:3000/smoke/sum?email=adam@gmail.com&days=30');
             const data = await res.json();
 
             setData(data)
