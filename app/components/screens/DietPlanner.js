@@ -10,7 +10,7 @@ const DietPlaner = props =>{
     startDate.setDate(startDate.getDate() - currentDate.getDay());
     startDate.setHours(startDate.getHours() + 2)
     const endDate = new Date();
-    endDate.getDate(startDate.getDate() + 7);
+    endDate.setDate(startDate.getDate() + 7);
 
     const daysOfTheWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
     const [data, setData] = useState(null);
@@ -19,15 +19,34 @@ const DietPlaner = props =>{
     useEffect(()=>{
         const getData = async () =>{
             const res = await fetch('http://192.168.0.24:3000/meal/week');
-            const data = await res.json();
+            const rawData = await res.json();
+            console.log(rawData)
+            const data = rawData.map(x=> {
+                return {
+                name: x.nazwa,
+                calories: x.kalorie,
+                count: x.ilość,
+                day: x.dzien,
+                dayTime: x.pora_dnia === 'o' ? 'Obiad' : x.pora_dnia === 's' ? 'Śniadanie' : x.pora_dnia === 'k' ? 'Kolacja' : 'Nieznana pora'
+
+            }}).sort((a,b)=>
+                a.dayTime === 'Nieznana pora' && b.dayTime != 'Nieznana pora' ? 1 
+                    : a.dayTime === 'Kolacja' && (b.dayTime != 'Nieznana pora' || b.dayTime != 'Kolacja') ? 1 
+                    : a.dayTime === 'Obiad' && (b.dayTime != 'Śniadanie' || b.dayTime != 'Obiad')? -1
+                    : a.dayTime === 'Śniadanie' && b.datTime != 'Śniadanie' ? -1 : 0
+            );
+
+            console.log(data)
             const leftData = daysOfTheWeek.map((x,i) => {
                 const date = new Date();
                 date.setDate(startDate.getDate() + i);
-                date.setHours(0,0,0,0);
-                const dayItems = data.filter(item => item.dzien === date.toISOString());
+                date.setUTCHours(0,0,0,0,0);
+                console.log(date.toISOString())
+                const dayItems = data.filter(item => item.day === date.toISOString());
                 let cal = 0;
+                console.log(dayItems)
                 dayItems.forEach(item =>{
-                    cal += item.kalorie * item.ilość.split('g')[0]/100;
+                    cal += item.calories * item.count.split('g')[0]/100;
                 })
                 return {
                     calories: cal || 0,
@@ -43,9 +62,7 @@ const DietPlaner = props =>{
     }, [])
 
     const leftListHandler = item =>{
-        console.log(selectedDay)
         setSelectedDay(item.date.toISOString());
-        console.log(selectedDay);  
     }
 
     return (
@@ -53,6 +70,7 @@ const DietPlaner = props =>{
             <View style = {styles.column}>
             <FlatList
                 keyExtractor = {(item) => item.day}
+                extraData={selectedDay}
                 data={leftListData}
                 renderItem={({item}) => 
                 <TouchableOpacity style={styles.container} onPress = {()=>leftListHandler(item)} >
@@ -63,12 +81,17 @@ const DietPlaner = props =>{
             </View>
             <View style = {styles.column}>
                 <FlatList
-                    keyExtractor = {(item) => item.nazwa}
+                    keyExtractor = {(item) => item.name}
                     extraData = {selectedDay}
-                    data={data != null && selectedDay != null ? data.filter(x=>x.dzien === selectedDay): [{day: ''}]}
+                    data={data != null && selectedDay != null ? data.filter(x=>x.day === selectedDay): []}
                     renderItem={ ({item}) =>
-                    <View>
-                        <Text style = {styles.item}>{item.nazwa}</Text>
+                    <View>    
+                        <Text style={{alignSelf:'center'}}>{item.dayTime}:</Text>
+                        <View style = {styles.container}>
+                            <Text style = {styles.smallItem}>{item.name}</Text>
+                            <Text style = {styles.smallItem}>{item.calories} kcal</Text>
+                            <Text style = {styles.smallItem}>{item.count}</Text>
+                        </View>
                     </View>}
                 />
             </View>
@@ -87,6 +110,9 @@ const styles = StyleSheet.create({
     },
     item:{
         width: '50%'
+    },
+    smallItem:{
+        width: '40%'
     }
   })
 
