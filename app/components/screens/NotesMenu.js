@@ -19,10 +19,10 @@ function GetData(props) {
 
     if (data != null) {
         if (listItems == null) {
-        setlistItems (data.map((nnote) => <Text key={nnote["nr_notatki"]}>{nnote["tekst"]}{"\n"}</Text>));
+        setlistItems (data.map((nnote) => <Text key={nnote["nr_notatki"]+""+nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
         }
-        console.log(data);
-        console.log(listItems);
+      //  console.log(data);
+       // console.log(listItems);
 
         return (
             <View>
