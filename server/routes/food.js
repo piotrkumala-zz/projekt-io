@@ -41,8 +41,7 @@ router.post('/delete', async (req, res, next)=>{
 })
 
 router.post('/add', async (req, res, next)=>{
-    console.log(req.body)
-    if(Object.values(req.body).any(x => x == null))
+    if(Object.values(req.body).every(x => x != null))
         res.json({
             error: true,
             message: 'body is empty'
