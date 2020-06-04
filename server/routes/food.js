@@ -13,7 +13,7 @@ const pool = new pg.Pool({
 
 
 router.get('/',async (req,res,next) =>{
-    let response= req.query.name != null ? await pool.query('SELECT * FROM jedzenie WHERE nazwa = $1', [req.query.name]) : await pool.query('SELECT * FROM jedzenie')
+    let response= req.query.name != null ? await pool.query('SELECT * FROM jedzenie WHERE nazwa = $1 SORT BY nazwa', [req.query.name]) : await pool.query('SELECT * FROM jedzenie')
     res.json(response.rows);
 })
 
