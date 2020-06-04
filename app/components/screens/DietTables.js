@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { SearchBar, Icon, Tooltip } from 'react-native-elements';
+import { SearchBar, Icon } from 'react-native-elements';
 
 const DietTables = props =>{
     const navigation = props.navigation;

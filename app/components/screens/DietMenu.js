@@ -15,7 +15,7 @@ function DietMenu(props) {
 
 	// plannerButton
 	const plannerButtonHandler = () => {
-		
+		navigation.push('DietPlanner')
 	};
 	const plannerButtonDescription = "Planer posiłków";
 
