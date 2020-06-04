@@ -113,3 +113,4 @@ hasla.txt
 
 # IDE files
 .idea
+app/package-lock.json

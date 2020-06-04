@@ -9,13 +9,13 @@ function DietMenu(props) {
 
 	// tablesButton
 	const tablesButtonHandler = () => {
-
+		navigation.push('DietTables')
 	};
 	const tablesButtonDescription = "Tabele";
 
 	// plannerButton
 	const plannerButtonHandler = () => {
-
+		
 	};
 	const plannerButtonDescription = "Planer posiłków";
 

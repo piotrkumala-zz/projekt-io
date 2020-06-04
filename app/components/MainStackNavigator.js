@@ -6,6 +6,8 @@ import MainMenu from './screens/MainMenu'
 import DietMenu from './screens/DietMenu'
 import SmokingMenu from './screens/SmokingMenu'
 import InformationMenu from './screens/InformationMenu'
+import DietTables from './screens/DietTables';
+import AddProduct from './screens/AddProduct';
 
 
 const Stack = createStackNavigator();
@@ -18,6 +20,8 @@ export default function MainStackNavigator () {
 		<Stack.Screen name="DietMenu" component={DietMenu} options={{ title: "Dieta"}} />
 		<Stack.Screen name="SmokingMenu" component={SmokingMenu} options={{ title: "Palenie"}} />
 		<Stack.Screen name="InformationMenu" component={InformationMenu} options={{ title: "Informacje"}} />
+		<Stack.Screen name="DietTables" component={DietTables} options={{ title: "Tabele"}} />
+		<Stack.Screen name="AddProduct" component={AddProduct} options={{title: "Dodaj produkt"}} />
 		</Stack.Navigator>
 		</NavigationContainer>
 	);
