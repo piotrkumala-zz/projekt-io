@@ -45,13 +45,13 @@ VALUES('Bulka grahamka','n',198.0,1.3,6.5,40.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Bułka kajzerka','n',226.0,2.6,5.8,44.8,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Bułka ma�lana','n',252.0,4.5,5.9,47.0,'t');
+VALUES('Bułka maślana','n',252.0,4.5,5.9,47.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Bułka pszenna zwyk�a','n',217.0,1.1,5.8,45.9,'t');
+VALUES('Bułka pszenna zwykła','n',217.0,1.1,5.8,45.9,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Bułka tarta','n',363.0,2.1,10.4,75.6,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Bułka wroc�awska','n',226.0,2.6,5.8,44.8,'t');
+VALUES('Bułka wrocławska','n',226.0,2.6,5.8,44.8,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Buraki','n',46.0,0.1,1.8,9.8,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -144,7 +144,7 @@ INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Dżemy niskosłodzone
 (średnio)','n',156.0,0.2,0.3,37.8,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('D�emy wysokosłodzone
+VALUES('Dżemy wysokosłodzone
 (średnio)','n',252.0,0.2,0.3,62.3,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Endywia, cykoria endywia','n',17.0,0.6,1.8,1.0,'t');
@@ -195,7 +195,7 @@ VALUES('Groszek zielony','n',98.0,0.4,6.7,17.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Groszek zielony, konserwa','n',83.0,0.2,4.5,15.8,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Groszek zielony, mro�ony','n',92.0,0.4,6.4,16.3,'t');
+VALUES('Groszek zielony, mrożony','n',92.0,0.4,6.4,16.3,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Gruszka','n',62.0,0.2,0.6,14.4,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -235,7 +235,7 @@ VALUES('Jajo kurze, żółtko','n',355.0,31.9,16.3,0.7,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Jarmuż','n',44.0,0.7,3.3,6.1,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Je�yny','n',71.0,0.4,1.2,15.7,'t');
+VALUES('Jeżyny','n',71.0,0.4,1.2,15.7,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Jogurt naturalny 0% tłuszczu','n',49.0,0.0,5.7,7.7,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -269,7 +269,7 @@ VALUES('Kasza gryczana','n',359.0,3.0,12.0,70.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Kasza jęczmienna','n',358.0,2.0,8.0,74.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Kasza jęczmienna p�czak','n',381.0,1.7,7.9,74.0,'t');
+VALUES('Kasza jęczmienna pęczak','n',381.0,1.7,7.9,74.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Kasza kuskus','n',358.0,2.0,13.0,77.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -293,7 +293,7 @@ VALUES('Koncentrat pomidorowy 30%','n',107.0,2.0,5.6,16.7,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Koper','n',32.0,0.4,2.8,6.1,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Kopytka ziemniaczane mro�one','n',169.0,0.8,2.2,38.2,'t');
+VALUES('Kopytka ziemniaczane mrożone','n',169.0,0.8,2.2,38.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Koral, lody koktajlowe','n',132.0,6.3,2.3,16.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -387,7 +387,7 @@ VALUES('Morele','n',52.0,0.2,0.7,11.9,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Morele suszone','n',321.0,1.2,5.4,72.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Morlinki, par�wki dla dzieci','n',251.0,21.8,13.1,0.7,'t');
+VALUES('Morlinki, parówki dla dzieci','n',251.0,21.8,13.1,0.7,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Muesli, Musli','n',370.0,6.8,9.1,68.1,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -435,7 +435,7 @@ VALUES('Ostrygi gotowane','n',163.0,4.6,18.9,9.9,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Otręby pszenne','n',183.0,4.6,16.0,61.9,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Paluszki s�one','n',384.0,4.9,9.9,75.2,'t');
+VALUES('Paluszki słone','n',384.0,4.9,9.9,75.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Papaja','n',43.0,0.1,0.6,9.8,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -465,9 +465,9 @@ VALUES('Pepsi Cola, napój','n',42.0,0.0,0.0,10.4,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Persymona suszona (owoc kaki)','n',305.0,0.6,1.4,73.4,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('P�dy bambusa','n',34.0,0.3,2.6,5.2,'t');
+VALUES('Pędy bambusa','n',34.0,0.3,2.6,5.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('P�dy bambusa, konserwa, ods�czone','n',23.0,0.4,1.7,3.2,'t');
+VALUES('Pędy bambusa, konserwa, odsączone','n',23.0,0.4,1.7,3.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Pieczarka gotowana','n',27.0,0.6,2.0,3.3,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -509,15 +509,15 @@ VALUES('Piwo korzenne','n',41.0,0.0,0.0,10.6,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Placki ziemniaczane','n',239.0,14.6,3.6,23.9,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('P�atki jęczmienne','n',389.0,3.6,9.8,79.4,'t');
+VALUES('Płatki jęczmienne','n',389.0,3.6,9.8,79.4,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('P�atki kukurydziane','n',385.0,2.5,6.9,83.6,'t');
+VALUES('Płatki kukurydziane','n',385.0,2.5,6.9,83.6,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('P�atki owsiane','n',390.0,7.2,11.9,69.3,'t');
+VALUES('Płatki owsiane','n',390.0,7.2,11.9,69.3,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('P�atki pszenne','n',387.0,3.0,9.0,81.0,'t');
+VALUES('Płatki pszenne','n',387.0,3.0,9.0,81.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('P�atki żytnie','n',385.0,3.2,6.4,82.6,'t');
+VALUES('Płatki żytnie','n',385.0,3.2,6.4,82.6,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Pomarańcza','n',51.0,0.2,0.9,11.3,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -621,7 +621,7 @@ VALUES('Serek twarogowy ziarnisty','n',101.0,4.3,12.3,3.3,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Sernik','n',273.0,9.0,10.0,38.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Serwatka p�ynna','n',25.0,0.1,0.8,5.1,'t');
+VALUES('Serwatka płynna','n',25.0,0.1,0.8,5.1,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Sezam, nasiona','n',672.0,59.9,23.2,10.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -631,7 +631,7 @@ VALUES('Siemię lniane','n',569.0,42.2,18.3,29.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Skorzonera gotowana','n',74.0,0.2,2.7,15.4,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Skorzonera, w�ymord czarny, czarne korzonki','n',90.0,0.2,3.3,18.6,'t');
+VALUES('Skorzonera, wężymord czarny, czarne korzonki','n',90.0,0.2,3.3,18.6,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Słonecznik, nasiona','n',580.0,49.0,22.5,12.3,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -681,7 +681,7 @@ VALUES('Szpinak','n',26.0,0.4,2.6,3.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Szpinak gotowany','n',25.0,0.3,2.7,3.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Szpinak mro�ony, gotowany','n',24.0,0.4,2.3,2.7,'t');
+VALUES('Szpinak mrożony, gotowany','n',24.0,0.4,2.3,2.7,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Śledź w pomidorach, konserwa','n',177.0,12.8,13.7,1.8,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -715,7 +715,7 @@ VALUES('Topinambur, słonecznik bulwiasty','n',78.0,0.1,2.0,17.4,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Truskawki','n',36.0,0.5,0.7,7.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Truskawki mro�one','n',32.0,0.4,0.7,7.2,'t');
+VALUES('Truskawki mrożone','n',32.0,0.4,0.7,7.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Twix, baton','n',487.0,23.2,5.3,64.2,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
@@ -723,7 +723,7 @@ VALUES('Wątroba drobiowa','n',136.0,6.3,19.1,0.9,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Wątroba wieprzowa','n',129.0,4.8,19.7,1.7,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
-VALUES('Wątroba wo�owa','n',124.0,3.1,20.0,4.0,'t');
+VALUES('Wątroba wołowa','n',124.0,3.1,20.0,4.0,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
 VALUES('Wermut, wino słodkie','n',62.0,0.0,0.2,15.9,'t');
 INSERT INTO Jedzenie(nazwa,policzalne,kalorie,tluszcz,białko,cukry,z_bazy)
