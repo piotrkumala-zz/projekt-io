@@ -10,8 +10,8 @@ const DietPlaner = props =>{
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - currentDate.getDay());
     startDate.setHours(startDate.getHours() + 2)
-    const endDate = new Date();
-    endDate.setDate(startDate.getDate() + 7);
+    const endDate = new Date(Number(startDate));
+    endDate.setDate(endDate.getDate() + 7);
 
     const daysOfTheWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
     const [data, setData] = useState(null);
@@ -21,7 +21,6 @@ const DietPlaner = props =>{
         const getData = async () =>{
             const res = await fetch('http://192.168.0.24:3000/meal/week');
             const rawData = await res.json();
-            console.log(rawData)
             const data = rawData.map(x=> {
                 return {
                 name: x.nazwa,
@@ -33,17 +32,17 @@ const DietPlaner = props =>{
             }}).sort((a,b)=>
                 a.dayTime === 'Nieznana pora' && b.dayTime != 'Nieznana pora' ? 1 
                     : a.dayTime === 'Kolacja' && (b.dayTime != 'Nieznana pora' || b.dayTime != 'Kolacja') ? 1 
-                    : a.dayTime === 'Obiad' && (b.dayTime != 'Śniadanie' || b.dayTime != 'Obiad')? -1
+                    : a.dayTime === 'Obiad' && b.dayTime == 'Śniadanie'? 1
                     : a.dayTime === 'Śniadanie' && b.datTime != 'Śniadanie' ? -1 : 0
             );
-
             console.log(data)
+
             const leftData = daysOfTheWeek.map((x,i) => {
-                const date = new Date();
-                date.setDate(startDate.getDate() + i);
+                const date = new Date(Number(startDate));
+                date.setDate(date.getDate() + i);
                 date.setUTCHours(0,0,0,0,0);
-                console.log(date.toISOString())
                 const dayItems = data.filter(item => item.day === date.toISOString());
+                console.log(date.toISOString())
                 let cal = 0;
                 console.log(dayItems)
                 dayItems.forEach(item =>{
