@@ -41,8 +41,8 @@ const DietPlaner = props =>{
                 const date = new Date(Number(startDate));
                 date.setDate(date.getDate() + i);
                 date.setUTCHours(0,0,0,0,0);
-                const dayItems = data.filter(item => item.day === date.toISOString());
-                console.log(date.toISOString())
+                const dayItems = data.filter(item => item.day.split('T')[0] === date.toISOString().split('T')[0]);
+                console.log(date.toISOString().split('T')[0])
                 let cal = 0;
                 console.log(dayItems)
                 dayItems.forEach(item =>{
