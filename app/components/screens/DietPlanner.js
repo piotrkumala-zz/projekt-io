@@ -56,13 +56,13 @@ const DietPlaner = props =>{
             });
             setLeftListData(leftData);
             setData(data);
-            setSelectedDay(startDate.toISOString());
+            setSelectedDay(startDate.toISOString().split('T')[0]);
         }
         getData();
     }, [])
 
     const leftListHandler = item =>{
-        setSelectedDay(item.date.toISOString());
+        setSelectedDay(item.date.toISOString().split('T')[0]);
     }
 
     return (
@@ -98,7 +98,7 @@ const DietPlaner = props =>{
                 <FlatList
                     keyExtractor = {(item) => item.name}
                     extraData = {selectedDay}
-                    data={data != null && selectedDay != null ? data.filter(x=>x.day === selectedDay): []}
+                    data={data != null && selectedDay != null ? data.filter(x=>x.day.split('T')[0] === selectedDay.split('T')[0]): []}
                     renderItem={ ({item}) =>
                     <View>    
                         <Text style={{alignSelf:'center'}}>{item.dayTime}:</Text>
