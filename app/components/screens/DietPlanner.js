@@ -19,7 +19,7 @@ const DietPlaner = props =>{
     const [selectedDay, setSelectedDay] = useState('');
     useEffect(()=>{
         const getData = async () =>{
-            const res = await fetch('http://192.168.178.200:3000/meal/week');
+            const res = await fetch('http://192.168.0.24:3000/meal/week');
             const rawData = await res.json();
             const data = rawData.map(x=> {
                 return {
