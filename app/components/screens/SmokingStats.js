@@ -4,7 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 
 function GetData(props) {
+    //definty could be done with just one server request. Most likle bould be better co calculate all stats client side
+    const [pop, setPop] = useState(null);
     const [data, setData] = useState(null);
+    const [data1, setData1] = useState(null);
     const [data7, setData7] = useState(null);
     const [data30, setData30] = useState(null);
 
@@ -14,17 +17,22 @@ function GetData(props) {
             const data30 = await res30.json();
             const res7 = await fetch('http://192.168.178.200:3000/smoke/sum?email=adam@gmail.com&days=7');
             const data7 = await res7.json();
-            const res = await fetch('http://192.168.178.200:3000/smoke/sum?email=adam@gmail.com&days=1');
+            const res1 = await fetch('http://192.168.178.200:3000/smoke/sum?email=adam@gmail.com&days=1');
+            const data1 = await res1.json();
+
+            const res = await fetch('http://192.168.178.200:3000/smoke/rodzaj?email=adam@gmail.com');
             const data = await res.json();
-            console.log(data30);
-            
+
             setData(data)
+            setData1(data1)
             setData7(data7)
             setData30(data30)
         }
         getData();
+
     }, [])
-    if (data != null&&data7 != null&&data30 != null) {
+    if (data != null && data1 != null && data7 != null && data30 != null) {
+
         return (
             <View>
                 < Text >
@@ -40,12 +48,12 @@ function GetData(props) {
                     7 dni: {data7[0]["sum"]}
                 </Text>
                 <Text>
-                    24h: {data[0]["sum"]}
+                    24h: {data1[0]["sum"]}
                 </Text>
                 <Text>
-                    Na papierosy
+                    Najczęściej urzywany szlug to {data[0]["rodzaj"]} urzywałeś go {data[0]["count"]} razy.
                 </Text>
-            </View>
+            </View>                                                                                   
 
         )
     }
