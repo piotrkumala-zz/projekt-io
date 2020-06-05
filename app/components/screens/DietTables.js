@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { SearchBar, Icon } from 'react-native-elements';
+import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import { SearchBar, Icon, Button } from 'react-native-elements';
+import AddMeal from '../screen_components/DietTables/AddMeal';
 
 const DietTables = props =>{
     const navigation = props.navigation;
     const [data, setData] = useState(null);
     const [originalData, setOriginalData] = useState(null);
     const [search, setSearch] = useState('');
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
 
     useEffect(()=>{
         const getData = async () =>{
@@ -24,11 +27,26 @@ const DietTables = props =>{
         setSearch(text)
     }
     const addProductHandler = ()=>{
-        if(data != null)
+        if(data!=null)
             navigation.push('AddProduct')
     }
+
+    const addMeal = (item) =>{
+        setSelectedItem(item)
+        setModalVisible(!modalVisible)
+}
     return(
         <View>
+            <Modal
+            animationType = 'slide'
+            transparent={true}
+            visible={modalVisible}>
+                <AddMeal
+                item={selectedItem}
+                visible={modalVisible}
+                setVisible={setModalVisible}
+                />
+            </Modal>
             <View>
                 <SearchBar 
                 placeholder = "Wyszukaj"
@@ -52,13 +70,13 @@ const DietTables = props =>{
                     keyExtractor = {(item) => item.nazwa}
                     data={data}
                     renderItem={({item}) => 
-                    <View style={styles.container}>
+                    <TouchableOpacity style={styles.container} onPress={()=>addMeal(item)}>
                         <Text style = {styles.item}>{item.nazwa}</Text>
                         <Text style = {styles.item}>{item.kalorie}</Text>
                         <Text style = {styles.item}>{item.tluszcz}</Text>
                         <Text style = {styles.item}>{item.białko}</Text>
                         <Text style = {styles.item}>{item.cukry}</Text>
-                    </View> }
+                    </TouchableOpacity> }
                 />               
             </View>
             <View>
@@ -105,6 +123,25 @@ const styles = StyleSheet.create({
     headersContainer:{
         position:'relative',
         flexDirection: 'row',
+    },
+    centeredView:{
+        alignItems: "center",
+        marginTop: 22,
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        alignSelf: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        height:'50%'
     }
   })
   
