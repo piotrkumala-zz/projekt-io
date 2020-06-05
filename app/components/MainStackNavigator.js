@@ -7,6 +7,8 @@ import DietMenu from './screens/DietMenu'
 import SmokingMenu from './screens/SmokingMenu'
 import InformationMenu from './screens/InformationMenu'
 import DietTables from './screens/DietTables';
+import SmokingStats from './screens/SmokingStats';
+import NotesMenu from './screens/NotesMenu';
 import AddProduct from './screens/AddProduct';
 import DietPlaner from './screens/DietPlanner';
 
@@ -22,6 +24,8 @@ export default function MainStackNavigator () {
 		<Stack.Screen name="SmokingMenu" component={SmokingMenu} options={{ title: "Palenie"}} />
 		<Stack.Screen name="InformationMenu" component={InformationMenu} options={{ title: "Informacje"}} />
 		<Stack.Screen name="DietTables" component={DietTables} options={{ title: "Tabele"}} />
+		<Stack.Screen name="SmokingStats" component={SmokingStats} options={{ title: "Statystyki"}} />
+		<Stack.Screen name="NotesMenu" component={NotesMenu} options={{ title: "Notatki"}} />
 		<Stack.Screen name="AddProduct" component={AddProduct} options={{title: "Dodaj produkt"}} />
 		<Stack.Screen name="DietPlanner" component={DietPlaner} options={{title: "Harmonogram"}} />
 		</Stack.Navigator>

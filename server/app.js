@@ -17,6 +17,9 @@ var recipeRouter = require('./routes/recipe');
 var portionRouter = require('./routes/portion');
 var mealRouter = require('./routes/meal')
 var smokeRouter = require('./routes/smoke')
+
+var noteRouter = require('./routes/note')
+
 var app = express();
 
 app.use(logger('dev'));
@@ -45,5 +48,7 @@ app.use('/meal', mealRouter);
 
 app.use('/smoke', smokeRouter);
 
+
+app.use('/note', noteRouter);
 
 module.exports = app;
