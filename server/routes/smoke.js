@@ -24,10 +24,26 @@ router.get('/type/stats', async (req, res, next) =>{
       req.query.email
     ])
     : await pool.query('select rodzaj,count(rodzaj) from palenie group by rodzaj order by count(rodzaj)').catch()
-
-  console.log(response.rows)
   res.json(response.rows)
 })
+
+router.get('/costs', async (req,res,next)=>{
+  let days = req.query.days != null ? req.query.days : '1000'
+  let response =
+    req.query.email != null
+      ? await pool.query(
+
+        "SELECT dzien, SUM(ilosc*cena_za_sztuke) FROM palenie WHERE email = $1 and dzien > current_date - $2*(interval '1 day') GROUP BY dzien ",
+        [req.query.email, days]
+      )
+      : await pool.query(
+        "SELECT dzien, SUM(ilosc*cena_za_sztuke) FROM palenie WHERE dzien > current_date - $1*(interval '1 day') GROUP BY dzien ",
+        [days]
+      )
+  res.json(response.rows)
+})
+
+
 router.get('/', async (req, res, next) => {
   let response =
     req.query.email != null
