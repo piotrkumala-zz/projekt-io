@@ -30,10 +30,7 @@ function GetData(props) {
             
             const chartDataRaw = await fetch('http://192.168.0.24:3000/smoke/costs?email=adam@gmail.com&days=30');
             const chartData = await chartDataRaw.json().catch();
-            console.log(chartData)
-            console.log(chartData.map(x=>x.dzien.split('T')[0]))
-            console.log(chartData.map(x=>x.sum))
-
+            
             setData(data)
             setData1(data1)
             setData7(data7)

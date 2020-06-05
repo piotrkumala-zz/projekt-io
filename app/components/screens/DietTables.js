@@ -18,7 +18,6 @@ const DietTables = props =>{
         }
         getData();
     }, [])
-    console.log(originalData)
     const filterData = (text) =>{
         const newData = originalData.filter(item => item.nazwa.includes(text));
         setData(newData)
@@ -42,7 +41,7 @@ const DietTables = props =>{
                 />
             </View>
             <View style = {{maxHeight:'75%'}}>
-                <View style = {styles.container}>
+                <View style = {styles.headersContainer}>
                     <Text style ={styles.header}>Nazwa:</Text>
                     <Text style = {styles.header}>Kalorie:</Text>
                     <Text style = {styles.header}>Tłuszcz:</Text>
@@ -98,10 +97,14 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         flexWrap: 'wrap',
         flexShrink: 1,
-        width: '20%'
+        width: '20%',
     },
     button:{
         alignSelf: 'center',
+    },
+    headersContainer:{
+        position:'relative',
+        flexDirection: 'row',
     }
   })
   
