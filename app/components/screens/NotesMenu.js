@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,ScrollView ,TextInput, TouchableOpacity } from 'react-native';
+import MenuButton from '../screen_components/common/MenuButton'
 
 
 function GetData(props) {
@@ -52,9 +53,9 @@ function GetData(props) {
         // console.log(listItems);
 
         return (
-            <View>
+            <ScrollView>
                 {listItems}
-                <Text>Koniec Notatek</Text>
+                
 
                 <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
@@ -62,12 +63,12 @@ function GetData(props) {
                     numberOfLines={4}
                     onChangeText={(text) => setText(text)}
                     value={text} />
-                <TouchableOpacity
-                    onPress={NotePressed}
-                    style={styles.button}>
-                    <Text>send</Text>
-                </TouchableOpacity>
-            </View>
+                <MenuButton
+                    handler={NotePressed}
+                    style={styles.button}
+                    description="zapisz Notatkę"
+                />
+            </ScrollView>
 
         )
     }
