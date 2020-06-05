@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Icon} from 'react-native-elements';
 
 const DietPlaner = props =>{
     const navigation = props.navigation;
@@ -9,8 +10,8 @@ const DietPlaner = props =>{
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - currentDate.getDay());
     startDate.setHours(startDate.getHours() + 2)
-    const endDate = new Date();
-    endDate.setDate(startDate.getDate() + 7);
+    const endDate = new Date(Number(startDate));
+    endDate.setDate(endDate.getDate() + 7);
 
     const daysOfTheWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
     const [data, setData] = useState(null);
@@ -20,7 +21,6 @@ const DietPlaner = props =>{
         const getData = async () =>{
             const res = await fetch('http://192.168.178.200:3000/meal/week');
             const rawData = await res.json();
-            console.log(rawData)
             const data = rawData.map(x=> {
                 return {
                 name: x.nazwa,
@@ -32,17 +32,17 @@ const DietPlaner = props =>{
             }}).sort((a,b)=>
                 a.dayTime === 'Nieznana pora' && b.dayTime != 'Nieznana pora' ? 1 
                     : a.dayTime === 'Kolacja' && (b.dayTime != 'Nieznana pora' || b.dayTime != 'Kolacja') ? 1 
-                    : a.dayTime === 'Obiad' && (b.dayTime != 'Śniadanie' || b.dayTime != 'Obiad')? -1
+                    : a.dayTime === 'Obiad' && b.dayTime == 'Śniadanie'? 1
                     : a.dayTime === 'Śniadanie' && b.datTime != 'Śniadanie' ? -1 : 0
             );
-
             console.log(data)
+
             const leftData = daysOfTheWeek.map((x,i) => {
-                const date = new Date();
-                date.setDate(startDate.getDate() + i);
+                const date = new Date(Number(startDate));
+                date.setDate(date.getDate() + i);
                 date.setUTCHours(0,0,0,0,0);
-                console.log(date.toISOString())
-                const dayItems = data.filter(item => item.day === date.toISOString());
+                const dayItems = data.filter(item => item.day.split('T')[0] === date.toISOString().split('T')[0]);
+                console.log(date.toISOString().split('T')[0])
                 let cal = 0;
                 console.log(dayItems)
                 dayItems.forEach(item =>{
@@ -56,34 +56,49 @@ const DietPlaner = props =>{
             });
             setLeftListData(leftData);
             setData(data);
-            setSelectedDay(startDate.toISOString());
+            setSelectedDay(startDate.toISOString().split('T')[0]);
         }
         getData();
     }, [])
 
     const leftListHandler = item =>{
-        setSelectedDay(item.date.toISOString());
+        setSelectedDay(item.date.toISOString().split('T')[0]);
     }
 
     return (
         <View style = {styles.container}>
             <View style = {styles.column}>
-            <FlatList
-                keyExtractor = {(item) => item.day}
-                extraData={selectedDay}
-                data={leftListData}
-                renderItem={({item}) => 
-                <TouchableOpacity style={styles.container} onPress = {()=>leftListHandler(item)} >
-                <Text style = {styles.item}>{item.day}</Text>
-                <Text style = {styles.item}>{item.calories}</Text>
-                </TouchableOpacity> }
-            />
+                <View style = {styles.centered}>
+                    <Icon
+                        name='calendar'
+                        type='font-awesome'                      
+                        color = 'grey'
+                    />
+                </View>
+                <FlatList
+                    keyExtractor = {(item) => item.day}
+                    extraData={selectedDay}
+                    data={leftListData}
+                    renderItem={({item}) => 
+                    <TouchableOpacity style={styles.container} onPress = {()=>leftListHandler(item)} >
+                    <Text style = {styles.item}>{item.day}</Text>
+                    <Text style = {styles.item}>{item.calories}</Text>
+                    </TouchableOpacity> }
+                />
             </View>
             <View style = {styles.column}>
+                <View style = {styles.centered}>
+                    <Icon
+                        name='list'
+                        type='font-awesome'        
+                        color = 'grey'
+
+                    />
+                </View>
                 <FlatList
                     keyExtractor = {(item) => item.name}
                     extraData = {selectedDay}
-                    data={data != null && selectedDay != null ? data.filter(x=>x.day === selectedDay): []}
+                    data={data != null && selectedDay != null ? data.filter(x=>x.day.split('T')[0] === selectedDay.split('T')[0]): []}
                     renderItem={ ({item}) =>
                     <View>    
                         <Text style={{alignSelf:'center'}}>{item.dayTime}:</Text>
@@ -106,14 +121,21 @@ const styles = StyleSheet.create({
     },
     column:{
         width: '50%',
-        flexDirection:'column'
+        flexDirection:'column',
+        height: '100%',
     },
     item:{
-        width: '50%'
+        width: '60%'
     },
     smallItem:{
         width: '40%'
+    },
+    centered:{
+        alignSelf:'center',
+        margin: 10
     }
   })
 
 export default DietPlaner;
+
+

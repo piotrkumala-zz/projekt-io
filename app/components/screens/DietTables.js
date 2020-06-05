@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { SearchBar, Icon, Tooltip } from 'react-native-elements';
+import { SearchBar, Icon } from 'react-native-elements';
 
 const DietTables = props =>{
     const navigation = props.navigation;
@@ -42,29 +42,25 @@ const DietTables = props =>{
                 />
             </View>
             <View style = {{maxHeight:'75%'}}>
-                <ScrollView style={{flexGrow:0}}>
-                    <ScrollView horizontal = {true} contentContainerStyle = {{ flexDirection:'column'}}>
-                    <View style ={styles.container} >
-                        <Text style ={styles.header}>Nazwa:</Text>
-                        <Text style = {styles.header}>Kalorie:</Text>
-                        <Text style = {styles.header}>Tłuszcz:</Text>
-                        <Text style = {styles.header}>Białko:</Text>
-                        <Text style = {styles.header}>Cukry:</Text>
-                    </View>
-                        <FlatList
-                            keyExtractor = {(item) => item.nazwa}
-                            data={data}
-                            renderItem={({item}) => 
-                            <View style={styles.container}>
-                                <Text style = {styles.item}>{item.nazwa}</Text>
-                                <Text style = {styles.item}>{item.kalorie}</Text>
-                                <Text style = {styles.item}>{item.tluszcz}</Text>
-                                <Text style = {styles.item}>{item.białko}</Text>
-                                <Text style = {styles.item}>{item.cukry}</Text>
-                            </View> }
-                        />
-                    </ScrollView>
-                </ScrollView>
+                <View style = {styles.container}>
+                    <Text style ={styles.header}>Nazwa:</Text>
+                    <Text style = {styles.header}>Kalorie:</Text>
+                    <Text style = {styles.header}>Tłuszcz:</Text>
+                    <Text style = {styles.header}>Białko:</Text>
+                    <Text style = {styles.header}>Cukry:</Text>
+                </View>
+                <FlatList
+                    keyExtractor = {(item) => item.nazwa}
+                    data={data}
+                    renderItem={({item}) => 
+                    <View style={styles.container}>
+                        <Text style = {styles.item}>{item.nazwa}</Text>
+                        <Text style = {styles.item}>{item.kalorie}</Text>
+                        <Text style = {styles.item}>{item.tluszcz}</Text>
+                        <Text style = {styles.item}>{item.białko}</Text>
+                        <Text style = {styles.item}>{item.cukry}</Text>
+                    </View> }
+                />               
             </View>
             <View>
                 <TouchableOpacity  style = {styles.button} onPress={addProductHandler}> 
@@ -84,24 +80,25 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
+        minHeight: '5%',
+        padding: 10
     },
     item: {
-        padding: 10,
-        paddingLeft: 10,
         fontSize: 18,
-        height: 44,
+        paddingBottom:10,
+        paddingLeft: 10,
         flexWrap: 'wrap',
         flexShrink: 1,
         flex: 1,
-        minWidth: 90
+        width: '20%'
     },    
     header: {
-        padding: 10,
         fontSize: 18,
         height: 44,
+        paddingLeft: 10,
         flexWrap: 'wrap',
         flexShrink: 1,
-        minWidth: 90
+        width: '20%'
     },
     button:{
         alignSelf: 'center',

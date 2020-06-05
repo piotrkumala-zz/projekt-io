@@ -55,7 +55,7 @@ const AddProduct = props =>{
 
     return (
         <ScrollView style = {styles.container}>
-            <Text>{errorMessage}</Text>
+            <Text style={styles.error}>{errorMessage}</Text>
             <Input
             maxLength = {40}
             onChangeText = {text => setName(text)}
@@ -119,7 +119,8 @@ const AddProduct = props =>{
 }
 const styles = StyleSheet.create({
     container:{
-        margin:10
+        padding:10,
+        height:'100%'
     },
     textLabel:{
         fontSize: 16,
@@ -133,6 +134,10 @@ const styles = StyleSheet.create({
     },
     placeholder: {
         fontSize:14
+    },
+    error:{
+        color: 'red',
+        fontWeight: 'bold'
     }
   })
 
