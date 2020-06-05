@@ -37,7 +37,7 @@ const AddProduct = props =>{
             sugar:sugar
         }
         console.log(data)
-        const res = await fetch('http://192.168.178.200:3000/food/add', {
+        const res = await fetch('http://192.168.0.24:3000/food/add', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
