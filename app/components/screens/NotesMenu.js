@@ -17,7 +17,7 @@ function GetData(props) {
             text: text
         };
         console.log(data1);
-        const res = await fetch('http://192.168.178.200:3000/note/add', {
+        const res = await fetch('http://192.168.0.24:3000/note/add', {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {
@@ -25,7 +25,7 @@ function GetData(props) {
             }
         });
         const getData = async () => {
-            const res = await fetch('http://192.168.178.200:3000/note?email=adam@gmail.com');
+            const res = await fetch('http://192.168.0.24:3000/note?email=adam@gmail.com');
             const data = await res.json();
 
             setData(data)
@@ -36,7 +36,7 @@ function GetData(props) {
     }
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch('http://192.168.178.200:3000/note?email=adam@gmail.com');
+            const res = await fetch('http://192.168.0.24:3000/note?email=adam@gmail.com');
             const data = await res.json();
 
             setData(data)

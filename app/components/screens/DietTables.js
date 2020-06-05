@@ -11,7 +11,7 @@ const DietTables = props =>{
 
     useEffect(()=>{
         const getData = async () =>{
-            const res = await fetch('http://192.168.178.200:3000/food');
+            const res = await fetch('http://192.168.0.24:3000/food');
             const data = await res.json();
             setOriginalData(data)
             setData(data)
