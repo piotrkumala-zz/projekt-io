@@ -59,12 +59,11 @@ router.post('/add', async (req, res, next) => {
       const result = await pool.query(
 
         'INSERT INTO palenie(email,dzien,ilosc,cena_za_sztuke,rodzaj) VALUES($1, $2::date, $3, $4, $5)',
-
+        [
           req.body.email,
           req.body.day,
           req.body.count,
           req.body.price,
-
           req.body.type
 
         ]
