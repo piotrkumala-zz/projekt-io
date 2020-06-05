@@ -6,6 +6,15 @@ const pool = new pg.Pool({
     'postgres://nviwmkcg:4-G6tFZ1xeDNz_W6f9C-qWQTJo8sq6Ww@drona.db.elephantsql.com:5432/nviwmkcg'
 }) //skoro itak byl na masterze
 
+router.get('/rodzaj/', async (req, res, next) => {
+  let response =
+    req.query.email != null
+      ? await pool.query('select rodzaj,count(rodzaj) from palenie WHERE email = $1 group by rodzaj order by count(rodzaj) desc limit 1 ', [
+        req.query.email
+      ])
+      : await pool.query('select rodzaj,count(rodzaj) from palenie group by rodzaj order by count(rodzaj) desc limit 1').catch()
+  res.json(response.rows)
+})
 router.get('/', async (req, res, next) => {
   let response =
     req.query.email != null
@@ -32,6 +41,8 @@ router.get('/sum/', async (req, res, next) => {
       )
   res.json(response.rows)
 })
+
+
 
 router.post('/add', async (req, res, next) => {
   if (!req.body)
