@@ -19,7 +19,7 @@ function GetData(props) {
         return (
             <View>
                 < Text >
-                    Urzytkownik: {data[0]["email"]}
+                    Użytkownik: {data[0]["email"]}
                 </Text >
                 < Text >
                     Wydałeś przez ostatnie 30 dni {data[0]["sum"]} zl na papierosy
