@@ -51,7 +51,7 @@ function GetData(props) {
                     24h: {data1[0]["sum"]}
                 </Text>
                 <Text>
-                    Najczęściej urzywany szlug to {data[0]["rodzaj"]} urzywałeś go {data[0]["count"]} razy.
+                    Najczęściej używany szlug to {data[0]["rodzaj"]}. Używałeś go {data[0]["count"]} razy.
                 </Text>
             </View>                                                                                   
 
