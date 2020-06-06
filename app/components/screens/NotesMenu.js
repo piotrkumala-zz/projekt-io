@@ -53,7 +53,7 @@ function GetData(props) {
                 <Text style={styles.note}>test</Text>
                 <TouchableOpacity
                     onPress={NotePressed}>
-                    <Text style={{ width: '15%', flex: 1, right: '-83%', paddingRight: 2, borderRadius: 10, textAlign: 'center', borderColor: '#000', borderWidth: 2 }}>save</Text>
+                    <Text style={styles.in_button}>save</Text>
 
                 </TouchableOpacity>
 
