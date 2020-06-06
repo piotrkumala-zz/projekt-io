@@ -56,6 +56,7 @@ function GetData(props) {
 
         return (
             <ScrollView style={{ display: "flex" }}
+            keyboardShouldPersistTaps='always'
             ref={ref => this.scrollView = ref}
             onContentSizeChange={(contentWidth, contentHeight)=>{        
                 this.scrollView.scrollToEnd({animated: true});
