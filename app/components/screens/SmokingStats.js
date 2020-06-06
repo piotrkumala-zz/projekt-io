@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import {LineChart, PieChart,} from "react-native-chart-kit";
 import { ScrollView } from 'react-native-gesture-handler';
 
+import { getHost, getEmail } from '../ServerConnection';
+
 function GetData(props) {
     //definty could be done with just one server request. Most likle bould be better co calculate all stats client side
     const [pop, setPop] = useState(null);
@@ -15,20 +17,20 @@ function GetData(props) {
 
     useEffect(() => {
         const getData = async () => {
-            const res30 = await fetch('http://192.168.0.24:3000/smoke/sum?email=adam@gmail.com&days=30');
+            const res30 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=30');
             const data30 = await res30.json();
-            const res7 = await fetch('http://192.168.0.24:3000/smoke/sum?email=adam@gmail.com&days=7');
+            const res7 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=7');
             const data7 = await res7.json();
-            const res1 = await fetch('http://192.168.0.24:3000/smoke/sum?email=adam@gmail.com&days=1');
+            const res1 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=1');
             const data1 = await res1.json();
             
-            const res = await fetch('http://192.168.0.24:3000/smoke/rodzaj?email=adam@gmail.com');
+            const res = await fetch(getHost() + '/smoke/rodzaj?email=' + getEmail() + '');
             const data = await res.json();
 
-            const typesDataRaw = await fetch('http://192.168.0.24:3000/smoke/type/stats?email=adam@gmail.com');
+            const typesDataRaw = await fetch(getHost() + '/smoke/type/stats?email=' + getEmail() + '');
             const typesData = await typesDataRaw.json().catch();
             
-            const chartDataRaw = await fetch('http://192.168.0.24:3000/smoke/costs?email=adam@gmail.com&days=30');
+            const chartDataRaw = await fetch(getHost() + '/smoke/costs?email=' + getEmail() + '&days=30');
             const chartData = await chartDataRaw.json().catch();
             console.log(chartData)
             console.log(chartData.map(x=>x.dzien.split('T')[0]))

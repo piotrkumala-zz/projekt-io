@@ -8,6 +8,8 @@ import {
 	Image,
 } from 'react-native';
 
+import { getHost, getEmail } from '../../ServerConnection';
+
 const SzlugButton = () => {
 	const [typ, setTyp] = useState('Normalny');
 	data = ([
@@ -41,7 +43,7 @@ const SzlugButton = () => {
 			type: typ,
 		};
 		console.log(data1);1.1
-		const res = await fetch('http://192.168.0.24:3000/smoke/add', {
+		const res = await fetch(getHost() + '/smoke/add?email=' + getEmail(), {
 			method: 'POST',
 			body: JSON.stringify(data1),
 			headers: {
