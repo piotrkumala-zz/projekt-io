@@ -41,16 +41,14 @@ const AddMeal = props =>{
         date: date,
         dayTime: dayTime
       }
-      console.log(data)
-      const res = await fetch('http://192.168.0.24:3000/meal/add', {
+      props.setVisible(!props.visible);   
+      fetch('http://192.168.0.24:3000/meal/add', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
         }            
       })
-      console.log(await res.json())
-      props.setVisible(!props.visible);   
   }
     return(
     <View style={styles.centeredView}>

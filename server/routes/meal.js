@@ -23,7 +23,7 @@ router.get('/week', async (req,res,next) =>{
             const startDate = mealHelper.getWeekStart();
             const endDate = mealHelper.getWeekEnd(startDate);
             const response = await pool.query(
-                'SELECT por.nazwa, por.ilość, j.kalorie, p.pora_dnia, p.dzien FROM posiłek p, porcja por, jedzenie j WHERE dzien > $1 AND dzien < $2 AND p.porcja_id = por.porcja_id AND j.nazwa = por.nazwa', 
+                'SELECT por.porcja_id por.nazwa, por.ilość, j.kalorie, p.pora_dnia, p.dzien FROM posiłek p, porcja por, jedzenie j WHERE dzien > $1 AND dzien < $2 AND p.porcja_id = por.porcja_id AND j.nazwa = por.nazwa', 
             [startDate, endDate]); 
             res.json(response.rows);
         }
@@ -70,11 +70,12 @@ router.post('/add', async (req, res, next) =>{
             const result = await pool.query('INSERT INTO porcja(nazwa, ilość, z_bazy, rodzaj) VALUES ( $1, $2, $3, $4) RETURNING porcja_id',
             [req.body.name, '' + req.body.count + ' g', 't', true]);
             const portion_id = result.rows[0].porcja_id;
+            console.log(portion_id)
             const result2 = await pool.query('; INSERT INTO posiłek(email,dzien,pora_dnia, porcja_id) VALUES ( $1, $2, $3, $4)',
             [req.body.email, req.body.date, req.body.dayTime, portion_id])
             res.json({
                 error: false,
-                message: result.rowCount + ' rows affected'
+                message: result.rowCount + ' rows affected' + result2.rowCount + 'rows affected'
             })
         }
         catch (e){

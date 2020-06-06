@@ -27,7 +27,8 @@ const DietPlaner = props =>{
                 calories: x.kalorie,
                 count: x.ilość,
                 day: x.dzien,
-                dayTime: x.pora_dnia === 'o' ? 'Obiad' : x.pora_dnia === 's' ? 'Śniadanie' : x.pora_dnia === 'k' ? 'Kolacja' : 'Nieznana pora'
+                dayTime: x.pora_dnia === 'o' ? 'Obiad' : x.pora_dnia === 's' ? 'Śniadanie' : x.pora_dnia === 'k' ? 'Kolacja' : 'Nieznana pora',
+                id: x.porcja_id
 
             }}).sort((a,b)=>
                 a.dayTime === 'Nieznana pora' && b.dayTime != 'Nieznana pora' ? 1 
@@ -36,15 +37,11 @@ const DietPlaner = props =>{
                     : a.dayTime === 'Śniadanie' && b.datTime != 'Śniadanie' ? -1 : 0
             );
             console.log(data)
-
             const leftData = daysOfTheWeek.map((x,i) => {
                 const date = new Date(Number(startDate));
                 date.setDate(date.getDate() + i);
-                date.setUTCHours(0,0,0,0,0);
                 const dayItems = data.filter(item => item.day.split('T')[0] === date.toISOString().split('T')[0]);
-                console.log(date.toISOString().split('T')[0])
                 let cal = 0;
-                console.log(dayItems)
                 dayItems.forEach(item =>{
                     cal += item.calories * item.count.split('g')[0]/100;
                 })
@@ -96,7 +93,7 @@ const DietPlaner = props =>{
                     />
                 </View>
                 <FlatList
-                    keyExtractor = {(item) => item.name}
+                    keyExtractor = {(item) => item.id}
                     extraData = {selectedDay}
                     data={data != null && selectedDay != null ? data.filter(x=>x.day.split('T')[0] === selectedDay.split('T')[0]): []}
                     renderItem={ ({item}) =>
