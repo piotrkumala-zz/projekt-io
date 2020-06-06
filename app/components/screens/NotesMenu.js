@@ -6,7 +6,6 @@ function GetData(props) {
     const [listItems, setlistItems] = useState(null);
     const [text, setText] = useState(null);
     const NotePressed = async () => {
-        console.log("UWAGA! Zapalono papieroska");
         const data1 = {
             email: 'adam@gmail.com',
             type: 'd',
@@ -14,22 +13,19 @@ function GetData(props) {
             text: text
         };
         console.log(data1);
-        const res = await fetch('http://192.168.178.200:3000/note/add', {
+        await fetch('http://192.168.178.200:3000/note/add', {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        const getData = async () => {
-            const res = await fetch('http://192.168.178.200:3000/note?email=adam@gmail.com');
-            const data = await res.json();
 
-            setData(data)
-        }
-        getData();
-        setlistItems(data.map((nnote) => <Text style={styles.note} key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
-
+        fetch('http://192.168.178.200:3000/note?email=adam@gmail.com')
+            .then((response) => response.json())
+            .then((data) =>
+                setlistItems(data.map((nnote) => <Text style={styles.note} key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
+            )
     }
     useEffect(() => {
         const getData = async () => {
@@ -49,8 +45,6 @@ function GetData(props) {
         return (
             <ScrollView style={{ display: "flex" }}>
                 {listItems}
-
-                <Text style={styles.note}>test</Text>
                 <TouchableOpacity
                     onPress={NotePressed}>
                     <Text style={styles.in_button}>save</Text>
