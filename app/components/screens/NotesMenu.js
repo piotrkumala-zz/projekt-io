@@ -5,6 +5,15 @@ function GetData(props) {
     const [data, setData] = useState(null);
     const [listItems, setlistItems] = useState(null);
     const [text, setText] = useState(null);
+    const [del, setDel] = useState(null);
+        
+    const deleteNote = async (nr, type) => {
+        if (del == 1) {
+            console.log(nr, type)
+        }
+        console.log(data, nr, type)
+
+    }
     const NotePressed = async () => {
         const data1 = {
             email: 'adam@gmail.com',
@@ -24,7 +33,7 @@ function GetData(props) {
         fetch('http://192.168.178.200:3000/note?email=adam@gmail.com')
             .then((response) => response.json())
             .then((data) =>
-                setlistItems(data.map((nnote) => <Text style={styles.note} key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
+                setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "," + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
             )
     }
     useEffect(() => {
@@ -39,15 +48,14 @@ function GetData(props) {
 
     if (data != null) {
         if (listItems == null) {
-            setlistItems(data.map((nnote) => <Text style={styles.note} key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
+            setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
         }
 
         return (
             <ScrollView style={{ display: "flex" }}>
                 {listItems}
-                <TouchableOpacity
-                    onPress={NotePressed}>
-                    <Text style={styles.in_button}>save</Text>
+                <TouchableOpacity>
+                    <Text onPress={NotePressed} style={styles.in_button}>save</Text>
 
                 </TouchableOpacity>
 
@@ -56,7 +64,7 @@ function GetData(props) {
                     multiline
                     onChangeText={(text) => setText(text)}
                     value={text} />
-
+                {/* <Text onPress={()=>setDel(1)}>DELETE MODE</Text> */}
             </ScrollView>
 
         )
