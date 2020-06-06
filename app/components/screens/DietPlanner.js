@@ -93,7 +93,7 @@ const DietPlaner = props =>{
                     />
                 </View>
                 <FlatList
-                    keyExtractor = {(item) => item.id}
+                    keyExtractor = {(item) => String(item.id)}
                     extraData = {selectedDay}
                     data={data != null && selectedDay != null ? data.filter(x=>x.day.split('T')[0] === selectedDay.split('T')[0]): []}
                     renderItem={ ({item}) =>
