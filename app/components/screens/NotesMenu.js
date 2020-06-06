@@ -54,7 +54,12 @@ function GetData(props) {
         }
 
         return (
-            <ScrollView style={{ display: "flex" }}>
+            <ScrollView style={{ display: "flex" }}
+            ref={ref => this.scrollView = ref}
+            onContentSizeChange={(contentWidth, contentHeight)=>{        
+                this.scrollView.scrollToEnd({animated: true});
+            }}>
+     {/* scrollToEnd({duration: 500})}> */}
                 {listItems}
                 <TouchableOpacity>
                     <Text onPress={NotePressed} style={styles.in_button}>save</Text>
