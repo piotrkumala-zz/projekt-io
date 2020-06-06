@@ -10,6 +10,7 @@ const pool = new pg.Pool({
     port: 5432,
     ssl: true
 })
+const mealHelper = require('../helpers/mealHelper')
 
 
 router.get('/',async (req,res,next) =>{
@@ -17,6 +18,23 @@ router.get('/',async (req,res,next) =>{
     res.json(response.rows);
 })
 
+router.get('/week', async (req,res,next) =>{
+        try{
+            const startDate = mealHelper.getWeekStart();
+            const endDate = mealHelper.getWeekEnd(startDate);
+            const response = await pool.query(
+                'SELECT por.nazwa, por.ilość, j.kalorie, p.pora_dnia, p.dzien FROM posiłek p, porcja por, jedzenie j WHERE dzien > $1 AND dzien < $2 AND p.porcja_id = por.porcja_id AND j.nazwa = por.nazwa', 
+            [startDate, endDate]); 
+            res.json(response.rows);
+        }
+        catch (e){
+            console.log(e)
+            res.json({
+                error: true,
+                message: e.detail
+            })
+        }
+})
 router.post('/delete', async (req, res, next)=>{
     if(!req.body.id)
         res.json( {

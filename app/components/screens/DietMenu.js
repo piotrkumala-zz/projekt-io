@@ -9,18 +9,19 @@ function DietMenu(props) {
 
 	// tablesButton
 	const tablesButtonHandler = () => {
-
+		navigation.push('DietTables')
 	};
 	const tablesButtonDescription = "Tabele";
 
 	// plannerButton
 	const plannerButtonHandler = () => {
-
+		navigation.push('DietPlanner')
 	};
 	const plannerButtonDescription = "Planer posiłków";
 
 	// notepadButton
 	const notepadButtonHandler = () => {
+		navigation.push('NotesMenu')
 
 	};
 	const notepadButtonDescription = "Notatnik";

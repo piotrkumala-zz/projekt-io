@@ -1,5 +1,7 @@
-import React from 'react';
-import { 
+
+import React, { useState, useEffect } from 'react';
+import { Dropdown } from 'react-native-material-dropdown';
+import {
 	View,
 	TouchableOpacity,
 	StyleSheet,
@@ -7,18 +9,69 @@ import {
 } from 'react-native';
 
 const SzlugButton = () => {
-	const szlugPressed = () => {
-		console.log("UWAGA! Zapalono papieroska");
-	};
+	const [typ, setTyp] = useState('Normalny');
+	data = ([
+		{
+			value: 'Normalny'
+		},{
+			value: 'Mocny'
+		}, {
+			value: 'Light'
+		},{
+			value: 'Ultra Light'
+		}
+	]);
 
+	const szlugPressed = async () => {
+
+		let priceMaping={
+			'Normalny': 1.3,
+			'Mocny':1.4,
+			'Light':1.6,
+			'Ultra Light':2.2,
+		}
+		console.log("UWAGA! Zapalono papieroska");
+		console.log(data);
+		
+		const data1 = {
+			email: 'adam@gmail.com',
+			day: new Date(Date.now()).toISOString().replace('T', ' ').replace('Z', ''),
+			count: 1,
+			price: priceMaping[typ],
+			type: typ,
+		};
+		console.log(data1);1.1
+		const res = await fetch('http://192.168.0.24:3000/smoke/add', {
+			method: 'POST',
+			body: JSON.stringify(data1),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	}
+	function handleRodzaj(e) {
+//		console.log(e);
+		setTyp(e);
+	}
 	return (
 		<View style={styles.view}>
-		<TouchableOpacity
-		 onPress={szlugPressed}
-		 style={styles.button}>
-		<Image style={styles.image} source={require('../../../assets/cigarette.png')}
-		/>
-		</TouchableOpacity>
+
+			<Dropdown
+				value="Normalny"
+				onChangeText={handleRodzaj}
+				label="Rodzaj"
+				data={data}
+				
+
+			/>
+
+
+			<TouchableOpacity
+				onPress={szlugPressed}
+				style={styles.button}>
+				<Image style={styles.image} source={require('../../../assets/cigarette.png')}
+				/>
+			</TouchableOpacity>
 		</View>
 	);
 };

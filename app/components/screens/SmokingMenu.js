@@ -16,7 +16,7 @@ function SmokingMenu(props) {
 
 	// statsButton
 	const statsButtonHandler = () => {
-
+		navigation.push('SmokingStats');
 	};
 	const statsButtonDescription = "Statystyki";
 
