@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import {ActivityIndicator, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { LineChart, PieChart, } from "react-native-chart-kit";
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -129,7 +129,7 @@ function GetData(props) {
 
         )
     }
-    return <Text>No data yet</Text>
+    return <ActivityIndicator size="large" color="#0000ff" />
 
 }
 
