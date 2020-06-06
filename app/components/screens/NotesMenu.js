@@ -22,6 +22,8 @@ function GetData(props) {
             nr: parseInt(Math.random() * 10000000 + 1000000),
             text: text
         };
+        setText("");
+
         console.log(data1);
         await fetch('http://192.168.178.200:3000/note/add', {
             method: 'POST',
@@ -30,7 +32,6 @@ function GetData(props) {
                 'Content-Type': 'application/json'
             }
         });
-        setText("")
         fetch('http://192.168.178.200:3000/note?email=adam@gmail.com')
             .then((response) => response.json())
             .then((data) =>
