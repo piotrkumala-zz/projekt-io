@@ -8,24 +8,21 @@ import {
 } from "react-native";
 
 const InputBox = (props) => {
-  // props.handler
+  // props.onChangeText
   // props.description
   //
   const description = props.description;
-  //const handler = props.handler;
-
-  const [value, onChangeText] = React.useState("");
+  const onChangeText = props.onChangeText;
 
   return (
     <View style={styles.view}>
-      <TouchableOpacity style={styles.input}>
+      <View style={styles.input}>
         <TextInput
           placeholder={description}
           style={styles.text}
           onChangeText={(text) => onChangeText(text)}
-          value={value}
         />
-      </TouchableOpacity>
+      </View>
     </View>
   );
 };

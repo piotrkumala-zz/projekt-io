@@ -5,6 +5,9 @@ import LoginTitle from "../screen_components/Auth/LoginTitle";
 import MenuButton from "../screen_components/common/MenuButton";
 import InputBox from "../screen_components/Auth/InputBox";
 
+import { loginUser } from '../ServerConnection';
+import { updateApp } from '../../App';
+
 function Login(props) {
   console.log(props);
 
@@ -15,13 +18,16 @@ function Login(props) {
 
   // email input
   const emailDescription = "E-mail";
+  const [emailValue, emailOnChangeText] = React.useState("");
 
   // password input
   const passwordDescription = "Hasło";
+  const [passwordValue, passwordOnChangeText] = React.useState("");
 
   // loginButton
   const loginButtonHandler = () => {
-    navigation.push("MainMenu");
+    loginUser(emailValue, passwordValue);
+    updateApp();
   };
   const loginButtonDescription = "Zaloguj się";
 
@@ -35,8 +41,14 @@ function Login(props) {
     <View style={styles.container}>
       <LoginTitle description={Title}>"</LoginTitle>
       <View style={styles.buttonsContainer}>
-        <InputBox description={emailDescription} />
-        <InputBox description={passwordDescription} />
+        <InputBox
+          description={emailDescription}
+          onChangeText={emailOnChangeText}
+        />
+        <InputBox
+          description={passwordDescription}
+          onChangeText={passwordOnChangeText}
+        />
         <MenuButton
           handler={loginButtonHandler}
           description={loginButtonDescription}
