@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View,ScrollView ,TextInput, TouchableOpacity } from 'react-native';
-import MenuButton from '../screen_components/common/MenuButton'
-
+import { ActivityIndicator, StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 
 function GetData(props) {
     const [data, setData] = useState(null);
     const [listItems, setlistItems] = useState(null);
-  //  const [nr, setNr] = useState(null);
     const [text, setText] = useState(null);
     const NotePressed = async () => {
         console.log("UWAGA! Zapalono papieroska");
         const data1 = {
             email: 'adam@gmail.com',
             type: 'd',
-            nr: parseInt(Math.random()*10000000+1000000),
+            nr: parseInt(Math.random() * 10000000 + 1000000),
             text: text
         };
         console.log(data1);
@@ -47,23 +44,20 @@ function GetData(props) {
     if (data != null) {
         if (listItems == null) {
             setlistItems(data.map((nnote) => <Text style={styles.note} key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
-   //         setNr(data.slice(-1)[0]["nr"] + 100);
         }
-        //  console.log(data);
-        // console.log(listItems);
 
         return (
-            <ScrollView style={{display:"flex"}}>
+            <ScrollView style={{ display: "flex" }}>
                 {listItems}
-                
+
                 <Text style={styles.note}>test</Text>
                 <TouchableOpacity
                     onPress={NotePressed}>
-                    <Text style={ {width: '15%',flex:1, right:'-83%',paddingRight:2,borderRadius:10,textAlign:'center', borderColor:'#000',borderWidth: 2}}>save</Text>
+                    <Text style={{ width: '15%', flex: 1, right: '-83%', paddingRight: 2, borderRadius: 10, textAlign: 'center', borderColor: '#000', borderWidth: 2 }}>save</Text>
 
-		        </TouchableOpacity>
+                </TouchableOpacity>
 
-                <TextInput 
+                <TextInput
                     style={styles.in}
                     multiline
                     onChangeText={(text) => setText(text)}
@@ -73,20 +67,13 @@ function GetData(props) {
 
         )
     }
-    return <Text>No data yet</Text>
-
+    return <ActivityIndicator size="large" color="#0000ff" />
 }
 
 const NotesMenu = props => {
-
-
-  
-
     return (
         <View>
             <GetData></GetData>
-
-
         </View>
     )
 }
@@ -118,32 +105,36 @@ const styles = StyleSheet.create({
     button: {
         alignSelf: 'center',
     },
-    note:{
+    note: {
         backgroundColor: '#e0e0e0',
         borderRadius: 10,
         borderWidth: 2,
         borderColor: '#000',
         margin: 10,
-        padding : 4,
+        padding: 4,
         fontSize: 20,
     },
-    in:{
+    in: {
         backgroundColor: '#e0e0e0',
         borderRadius: 10,
         borderWidth: 2,
         borderColor: '#000',
         margin: 10,
-        padding : 4,
+        padding: 4,
         fontSize: 20,
         width: "95%",
-       // width: '80%',
         alignSelf: 'flex-start',
-        // flexDirection: 'row',
-        // flex: 2,
-
     },
-
-
+    in_button: {
+        width: '15%',
+        flex: 1,
+        right: '-83%',
+        paddingRight: 2,
+        borderRadius: 10,
+        textAlign: 'center',
+        borderColor: '#000',
+        borderWidth: 2.
+    }
 })
 
 
