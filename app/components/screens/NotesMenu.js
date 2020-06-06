@@ -4,7 +4,7 @@ import { ActivityIndicator, StyleSheet, Text, View, ScrollView, TextInput, Touch
 function GetData(props) {
     const [data, setData] = useState(null);
     const [listItems, setlistItems] = useState(null);
-    const [text, setText] = useState(null);
+    const [text, setText] = useState("");
     const [del, setDel] = useState(null);
         
     const deleteNote = async (nr, type) => {
@@ -15,6 +15,7 @@ function GetData(props) {
 
     }
     const NotePressed = async () => {
+        if(text!=""){
         const data1 = {
             email: 'adam@gmail.com',
             type: 'd',
@@ -29,12 +30,13 @@ function GetData(props) {
                 'Content-Type': 'application/json'
             }
         });
-
+        setText("")
         fetch('http://192.168.178.200:3000/note?email=adam@gmail.com')
             .then((response) => response.json())
             .then((data) =>
                 setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "," + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
             )
+    }
     }
     useEffect(() => {
         const getData = async () => {
