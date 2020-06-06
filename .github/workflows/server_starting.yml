@@ -13,7 +13,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: npm i
-    - run: npm start
+    - name: instaling
+      working-directory: ./server 
+      run: npm i
+    - name: starting server
+      working-directory: ./server
+      run: npm start
       env:
         CI: true
+        SECRET: secretwhatever
+        DATABASE_URL: postgres://nviwmkcg:4-G6tFZ1xeDNz_W6f9C-qWQTJo8sq6Ww@drona.db.elephantsql.com:5432/nviwmkcg
