@@ -23,7 +23,7 @@ CREATE TABLE Notatnik(
 
 CREATE TABLE Palenie(
 	email varchar(50),
-	dzien date,
+	dzien timestamptz,
 	ilosc int,
 	cena_za_sztuke float,
 	rodzaj varchar(30),
