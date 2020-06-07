@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from "react-native";
 import MenuButton from "../screen_components/common/MenuButton";
 import InputBox from "../screen_components/Auth/InputBox";
 
+import { registerUser } from '../ServerConnection';
+
 function Login(props) {
   console.log(props);
 
@@ -36,7 +38,14 @@ function Login(props) {
   // registerButton
   // TODO actual registering
   const registerButtonHandler = () => {
-
+	  registerUser({
+		  email: emailValue,
+		  firstName: firstNameValue,
+		  lastName: lastNameValue,
+		  height: heightValue,
+		  gender: genderValue,
+		  password: passwordValue
+	  });
   };
   const registerButtonDescription = "Zarejestruj się";
 
