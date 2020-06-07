@@ -1,6 +1,7 @@
 
-hostAddress = "http://172.20.10.2:3000";
-userToken = ""
+hostAddress = "http://192.168.1.10:3000";
+userToken = "";
+userEmail = "";
 
 export const getHost = () => {
 	return hostAddress;
@@ -9,6 +10,12 @@ export const getHost = () => {
 export const getToken = () => {
 	console.log(userToken);
 	return userToken;
+}
+
+export const getEmail = () => {
+	console.log("userEmail: ");
+	console.log(userEmail);
+	return userEmail;
 }
 
 export const isUserLoggedIn = () => {
@@ -38,6 +45,8 @@ export const loginUser = (email, password) => {
 			if (result.token)
 				userToken = result.token})
 		.catch(error => console.log('error', error));
+
+	userEmail = email;
 }
 
 export const registerUser = (userData) => {
