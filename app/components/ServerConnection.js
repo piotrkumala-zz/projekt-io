@@ -1,16 +1,19 @@
 
-userEmail = "";
 hostAddress = "http://172.20.10.2:3000";
 userToken = ""
 
-export const getEmail = () => {
-	// TODO fetch from server
-	// return userEmail;
-	return userEmail;
-}
-
 export const getHost = () => {
 	return hostAddress;
+}
+
+export const getToken = () => {
+	console.log(userToken);
+	return userToken;
+}
+
+export const isUserLoggedIn = () => {
+	console.log(userToken)
+	return userToken !== "";
 }
 
 export const loginUser = (email, password) => {
@@ -18,8 +21,8 @@ export const loginUser = (email, password) => {
 	myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
 	var urlencoded = new URLSearchParams();
-	urlencoded.append("email", email); //"antonina@testowska.test");
-	urlencoded.append("password", password); //"321apud");
+	urlencoded.append("email", email);
+	urlencoded.append("password", password);
 
 	var requestOptions = {
 		method: 'POST',
@@ -35,11 +38,6 @@ export const loginUser = (email, password) => {
 			if (result.token)
 				userToken = result.token})
 		.catch(error => console.log('error', error));
-}
-
-export const isUserLoggedIn = () => {
-	console.log(userToken)
-	return userToken !== "";
 }
 
 export const registerUser = (userData) => {
