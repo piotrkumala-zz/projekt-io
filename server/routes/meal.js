@@ -22,6 +22,8 @@ router.get('/week', async (req,res,next) =>{
         try{
             const startDate = mealHelper.getWeekStart();
             const endDate = mealHelper.getWeekEnd(startDate);
+            console.log(startDate)
+            console.log(endDate)
             const response = await pool.query(
                 'SELECT por.porcja_id, por.nazwa, por.ilość, j.kalorie, p.pora_dnia, p.dzien FROM posiłek p, porcja por, jedzenie j WHERE dzien > $1 AND dzien < $2 AND p.porcja_id = por.porcja_id AND j.nazwa = por.nazwa', 
             [startDate, endDate]); 
