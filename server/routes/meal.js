@@ -73,6 +73,7 @@ router.post('/add', async (req, res, next) =>{
             [req.body.name, '' + req.body.count + ' g', 't', true]);
             const portion_id = result.rows[0].porcja_id;
             console.log(portion_id)
+            console.log(req.body.date)
             const result2 = await pool.query('; INSERT INTO posiłek(email,dzien,pora_dnia, porcja_id) VALUES ( $1, $2, $3, $4)',
             [req.body.email, req.body.date, req.body.dayTime, portion_id])
             res.json({
