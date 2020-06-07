@@ -1,6 +1,6 @@
 
 userEmail = "";
-hostAddress = "http://192.168.1.106:3000";
+hostAddress = "http://10.5.50.231:3000";
 userToken = ""
 
 export const getEmail = () => {
@@ -24,11 +24,12 @@ export const loginUser = (email, password) => {
 		redirect: 'follow'
 	};
 
-	fetch("http://192.168.1.106:3000/users/login", requestOptions)
+	fetch(hostAddress + "/users/login", requestOptions)
 		.then(response => response.json())
 		.then(result => {
 			console.log(result);
-			userToken = result.token})
+			if (result.token)
+				userToken = result.token})
 		.catch(error => console.log('error', error));
 }
 
@@ -37,6 +38,7 @@ export const getHost = () => {
 }
 
 export const isUserLoggedIn = () => {
+	console.log(userToken)
 	return userToken !== "";
 }
 
