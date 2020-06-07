@@ -1,18 +1,15 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
-const MenuButton = (props) => {
+const LoginTitle = (props) => {
   // props.handler
   // props.description
   //
   const description = props.description;
-  const handler = props.handler;
 
   return (
     <View style={styles.view}>
-      <TouchableOpacity onPress={props.handler} style={styles.button}>
-        <Text style={styles.text}>{description}</Text>
-      </TouchableOpacity>
+      <Text style={styles.text}>{description}</Text>
     </View>
   );
 };
@@ -25,15 +22,15 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#ddd",
     alignItems: "center",
-    borderRadius: 50,
-    padding: 15,
+    borderRadius: 0,
+    padding: 0,
   },
   text: {
-    fontSize: 24,
+    fontSize: 30,
     textAlign: "center",
     alignItems: "center",
     color: "#777",
   },
 });
 
-export default MenuButton;
+export default LoginTitle;
