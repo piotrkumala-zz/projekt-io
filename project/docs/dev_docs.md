@@ -29,3 +29,5 @@
 1. Do modułu notatek można dodać możliwość usuwania utworzonych notatek.
 1. Do aplikacji można dodać komponent zapomniałem hasła - w tym momencie trzeba się kontaktować z administratorem systemu.
 1. Możliwość dodawania przepisów i posiłków opartych na tych przepisach.
+1. Można dodać moduł określania celów i statystyk postępów w osiąganiu celu.
+   

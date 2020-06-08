@@ -25,14 +25,14 @@ function GetData(props) {
         setText("");
 
         console.log(data1);
-        await fetch('http://192.168.178.200:3000/note/add', {
+        await fetch('http://192.168.0.24:3000/note/add', {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        fetch('http://192.168.178.200:3000/note?email=adam@gmail.com')
+        fetch('http://192.168.0.24:3000/note?email=adam@gmail.com')
             .then((response) => response.json())
             .then((data) =>
                 setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "," + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
@@ -41,7 +41,7 @@ function GetData(props) {
     }
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch('http://192.168.178.200:3000/note?email=adam@gmail.com');
+            const res = await fetch('http://192.168.0.24:3000/note?email=adam@gmail.com');
             const data = await res.json();
 
             setData(data)
