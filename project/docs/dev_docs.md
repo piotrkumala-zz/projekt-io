@@ -1,6 +1,18 @@
-# Dokumentacja deweloperska
+# FIT - Aplikacja Fit Helper do wspierania zdrowego stylu życia
+### Wydział Fizyki i Informatyki Stosowanej - Inżynieria Oprogramowania
+### Skład zespołu:
+1. Piotr Kumala (team-leader)
+1. Patryk Chodur
+1. Leszek Lorens
+1. Maciej Domagalski
+1. Tomasz Praszkiewicz
+1. Dawid Górka
 
-## Rozwiązania zastosowane w aplikacji:
+
+
+## Dokumentacja deweloperska
+
+### Rozwiązania zastosowane w aplikacji:
 1. Część backendowa jest napisana we frameworku express do node.js
 1. Na serwerze zaimplementowana jest autoryzacja opierająca się na szyfrowanych jsw (json web token)
 1. Serwer jest udostępniany w chmurze, aby użytkownicy nie musieli zajmować się instalacją i utrzymaniem serwera
@@ -11,7 +23,7 @@
 1. Po zalogowaniu użytkownika w aplikacji token jest zapisywany w stanie aplikacji, ponieważ każdy request do serwera powinien zawierać token w celu poprawnej autoryzacji requesta.
 1. W aplikacji mobilnej szeroko wykorzysywana jest biblioteka react-native-components oraz react-native-chart-kit do tworzenia wykresów.
 
-## Pomysły ulepszeń:
+### Pomysły ulepszeń:
 1. W planerze posiłków możnać dodać możliwość wybierania zakresu dat, z których powinny być wyświetlane posiłki.
 1. W planerze posiłków można dodać wykresy lepiej prezentujące dane analityczne.
 1. Do modułu notatek można dodać możliwość usuwania utworzonych notatek.
