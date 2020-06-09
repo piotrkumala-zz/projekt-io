@@ -44,6 +44,7 @@ const DietPlaner = props =>{
                 date.setDate(date.getDate() + i);
                 const dayItems = data.filter(item => item.day.split('T')[0] === date.toISOString().split('T')[0]);
                 let cal = 0;
+                console.log(date.toISOString().split('T')[0])
                 dayItems.forEach(item =>{
                     cal += item.calories * item.count.split('g')[0]/100;
                 })

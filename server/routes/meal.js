@@ -22,6 +22,8 @@ router.get('/week', async (req,res,next) =>{
         try{
             const startDate = mealHelper.getWeekStart();
             const endDate = mealHelper.getWeekEnd(startDate);
+            console.log(startDate)
+            console.log(endDate)
             const response = await pool.query(
                 'SELECT por.porcja_id, por.nazwa, por.ilość, j.kalorie, p.pora_dnia, p.dzien FROM posiłek p, porcja por, jedzenie j WHERE dzien > $1 AND dzien < $2 AND p.porcja_id = por.porcja_id AND j.nazwa = por.nazwa', 
             [startDate, endDate]); 
@@ -71,6 +73,7 @@ router.post('/add', async (req, res, next) =>{
             [req.body.name, '' + req.body.count + ' g', 't', true]);
             const portion_id = result.rows[0].porcja_id;
             console.log(portion_id)
+            console.log(req.body.date)
             const result2 = await pool.query('; INSERT INTO posiłek(email,dzien,pora_dnia, porcja_id) VALUES ( $1, $2, $3, $4)',
             [req.body.email, req.body.date, req.body.dayTime, portion_id])
             res.json({

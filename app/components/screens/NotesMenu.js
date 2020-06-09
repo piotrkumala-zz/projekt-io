@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View,ScrollView ,TextInput, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View,ScrollView ,TextInput, TouchableOpacity } from 'react-native';
 import MenuButton from '../screen_components/common/MenuButton'
 
 import { getHost, getEmail } from '../ServerConnection';
@@ -8,37 +8,45 @@ import { getHost, getEmail } from '../ServerConnection';
 function GetData(props) {
     const [data, setData] = useState(null);
     const [listItems, setlistItems] = useState(null);
-  //  const [nr, setNr] = useState(null);
-    const [text, setText] = useState(null);
+    const [text, setText] = useState("");
+    const [del, setDel] = useState(null);
+        
+    const deleteNote = async (nr, type) => {
+        if (del == 1) {
+            console.log(nr, type)
+        }
+        console.log(data, nr, type)
+
+    }
     const NotePressed = async () => {
-        console.log("UWAGA! Zapalono papieroska");
+        if(text!=""){
         const data1 = {
             email: 'adam@gmail.com',
             type: 'd',
-            nr: parseInt(Math.random()*10000000+1000000),
+            nr: parseInt(Math.random() * 10000000 + 1000000),
             text: text
         };
+        setText("");
+
         console.log(data1);
-        const res = await fetch(getHost() + '/note/add?email=' + getEmail(), {
+        await fetch(getHost() + '/note/add', {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        const getData = async () => {
-            const res = await fetch(getHost() + '/note?email=' + getEmail() + '');
-            const data = await res.json();
 
-            setData(data)
-        }
-        getData();
-        setlistItems(data.map((nnote) => <Text key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
-
+        fetch(getHost() + '/note?email=' + getEmail())
+            .then((response) => response.json())
+            .then((data) =>
+                setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "," + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
+            )
+    }
     }
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch(getHost() + '/note?email=' + getEmail() + '');
+            const res = await fetch('http://192.168.178.200:3000/note?email=adam@gmail.com');
             const data = await res.json();
 
             setData(data)
@@ -48,46 +56,40 @@ function GetData(props) {
 
     if (data != null) {
         if (listItems == null) {
-            setlistItems(data.map((nnote) => <Text key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
-   //         setNr(data.slice(-1)[0]["nr"] + 100);
+            setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "" + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>));
         }
-        //  console.log(data);
-        // console.log(listItems);
 
         return (
-            <ScrollView>
+            <ScrollView style={{ display: "flex" }}
+            keyboardShouldPersistTaps='always'
+            ref={ref => this.scrollView = ref}
+            onContentSizeChange={(contentWidth, contentHeight)=>{        
+                this.scrollView.scrollToEnd({animated: true});
+            }}>
+     {/* scrollToEnd({duration: 500})}> */}
                 {listItems}
-                
+                <TouchableOpacity>
+                    <Text onPress={NotePressed} style={styles.in_button}>save</Text>
+
+                </TouchableOpacity>
 
                 <TextInput
-                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                    multiline={true}
-                    numberOfLines={4}
+                    style={styles.in}
+                    multiline
                     onChangeText={(text) => setText(text)}
                     value={text} />
-                <MenuButton
-                    handler={NotePressed}
-                    style={styles.button}
-                    description="zapisz Notatkę"
-                />
+                {/* <Text onPress={()=>setDel(1)}>DELETE MODE</Text> */}
             </ScrollView>
 
         )
     }
-    return <Text>No data yet</Text>
-
+    return <ActivityIndicator size="large" color="#0000ff" />
 }
 
 const NotesMenu = props => {
-
-
-  
-
     return (
         <View>
             <GetData></GetData>
-
-
         </View>
     )
 }
@@ -96,6 +98,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
+
     },
     item: {
         padding: 10,
@@ -117,6 +120,36 @@ const styles = StyleSheet.create({
     },
     button: {
         alignSelf: 'center',
+    },
+    note: {
+        backgroundColor: '#e0e0e0',
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: '#000',
+        margin: 10,
+        padding: 4,
+        fontSize: 20,
+    },
+    in: {
+        backgroundColor: '#e0e0e0',
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: '#000',
+        margin: 10,
+        padding: 4,
+        fontSize: 20,
+        width: "95%",
+        alignSelf: 'flex-start',
+    },
+    in_button: {
+        width: '15%',
+        flex: 1,
+        right: '-83%',
+        paddingRight: 2,
+        borderRadius: 10,
+        textAlign: 'center',
+        borderColor: '#000',
+        borderWidth: 2.
     }
 })
 
