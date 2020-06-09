@@ -46,7 +46,7 @@ function GetData(props) {
     }
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch('http://192.168.178.200:3000/note?email=adam@gmail.com');
+            const res = await fetch(getHost() +'/note?'+getEmail())
             const data = await res.json();
 
             setData(data)
