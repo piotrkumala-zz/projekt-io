@@ -1,5 +1,5 @@
 
-hostAddress = "http://192.168.1.10:3000";
+hostAddress = "http://192.168.178.200:3000";
 userToken = "";
 userEmail = "";
 
@@ -58,24 +58,25 @@ export const registerUser = (userData) => {
 	//   gender: string ("m" or "f"),
 	//   password: string,
 	// }
-	var urlencoded = new URLSearchParams();
-	urlencoded.append("email", userData.email); //"antonina@testowska.test");
-	urlencoded.append("firstName", userData.firstName); //"321apud");
-	urlencoded.append("lastName", userData.lastName); //"321apud");
-	urlencoded.append("height", userData.height); //"321apud");
-	urlencoded.append("gender", userData.gender); //"321apud");
-	urlencoded.append("password", userData.password); //"321apud");
+	// var urlencoded = new URLSearchParams();
+	// urlencoded.append("email", userData.email); //"antonina@testowska.test");
+	// urlencoded.append("firstName", userData.firstName); //"321apud");
+	// urlencoded.append("lastName", userData.lastName); //"321apud");
+	// urlencoded.append("height", userData.height); //"321apud");
+	// urlencoded.append("gender", userData.gender); //"321apud");
+	// urlencoded.append("password", userData.password); //"321apud");
 
 
 	
 	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+	myHeaders.append("Content-Type", 'application/json');
 
 	var requestOptions = {
 		method: 'POST',
 		headers: myHeaders,
-		body: urlencoded.toString(),//JSON.stringify(userData),
-		redirect: 'follow'
+		body: JSON.stringify(userData),//urlencoded.toString(),
+		redirect: 'follow',
+
 	};
 
 	console.log(userData);

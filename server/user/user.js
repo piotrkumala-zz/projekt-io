@@ -13,6 +13,10 @@ var Helper = require('./helper');
 
 const User = {
 	async create(req, res) {
+		console.log(req.body);
+	//	console.log(!req.body.email, !req.body.password, !req.body.firstName ,!req.body.lastName , !req.body.height ,!req.body.gender);
+	//	console.log(req.body.email, req.body.password, req.body.firstName ,req.body.lastName , req.body.height ,req.body.gender);
+		
 		if(!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName || !req.body.height || !req.body.gender) {
 			return res.status(400).send({'message': 'Wszystkie pola muszą być wypełnione'});
 		}

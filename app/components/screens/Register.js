@@ -51,7 +51,7 @@ function Login(props) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttonsContainer}>
+      <View style={styles.buttonsContainer} keyboardShouldPersistTaps='always'>
         <InputBox
           description={emailDescription}
           onChangeText={emailOnChangeText}
