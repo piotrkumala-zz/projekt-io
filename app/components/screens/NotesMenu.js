@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View,ScrollView ,TextInput, TouchableOpacity } from 'react-native';
-import MenuButton from '../screen_components/common/MenuButton'
 
 import { getHost, getEmail } from '../ServerConnection';
 
@@ -21,7 +20,7 @@ function GetData(props) {
     const NotePressed = async () => {
         if(text!=""){
         const data1 = {
-            email: 'adam@gmail.com',
+            email: getEmail(),
             type: 'd',
             nr: parseInt(Math.random() * 10000000 + 1000000),
             text: text
@@ -46,7 +45,7 @@ function GetData(props) {
     }
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch(getHost() +'/note?'+getEmail())
+            const res = await fetch(getHost() +'/note?email='+getEmail())
             const data = await res.json();
 
             setData(data)

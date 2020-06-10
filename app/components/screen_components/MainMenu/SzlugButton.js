@@ -36,7 +36,7 @@ const SzlugButton = () => {
 		console.log(data);
 		
 		const data1 = {
-			email: 'adam@gmail.com',
+			email: getEmail(),
 			day: new Date(Date.now()).toISOString().replace('T', ' ').replace('Z', ''),
 			count: 1,
 			price: priceMaping[typ],

@@ -37,7 +37,7 @@ const AddMeal = props =>{
       const data = {
         name: item.nazwa,
         count: count,
-        email: 'adam@gmail.com',
+        email: getEmail(),
         date: date,
         dayTime: dayTime
       }
