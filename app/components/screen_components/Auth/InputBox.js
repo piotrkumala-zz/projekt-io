@@ -13,6 +13,7 @@ const InputBox = (props) => {
   //
   const description = props.description;
   const onChangeText = props.onChangeText;
+  const secureTextEntry = props.secureTextEntry;
 
   return (
     <View style={styles.view}>
@@ -21,6 +22,7 @@ const InputBox = (props) => {
           placeholder={description}
           style={styles.text}
           onChangeText={(text) => onChangeText(text)}
+		  secureTextEntry={secureTextEntry}
         />
       </View>
     </View>
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
-    fontSize: 24,
+    fontSize: 18,
     textAlign: "center",
     alignItems: "center",
     color: "#777",

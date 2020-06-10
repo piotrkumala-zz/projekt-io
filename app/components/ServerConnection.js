@@ -1,5 +1,5 @@
 
-hostAddress = "http://192.168.178.200:3000";
+hostAddress = "http://192.168.0.87:3000";
 userToken = "";
 userEmail = "";
 

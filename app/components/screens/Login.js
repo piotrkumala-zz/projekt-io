@@ -44,10 +44,12 @@ function Login(props) {
         <InputBox
           description={emailDescription}
           onChangeText={emailOnChangeText}
+		  secureTextEntry={false}
         />
         <InputBox
           description={passwordDescription}
           onChangeText={passwordOnChangeText}
+		  secureTextEntry={true}
         />
         <MenuButton
           handler={loginButtonHandler}
