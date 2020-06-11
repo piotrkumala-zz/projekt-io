@@ -15,7 +15,14 @@ router.get('/', async (req, res, next) => {
                 req.query.email
             ])
             : await pool.query('SELECT * FROM notatnik').catch()
-    res.json(response.rows)
+    if(response.rows)
+        res.json(response.rows)
+    else
+    {
+        res.json([{
+            name: req.query.email
+        }])
+    }
 })
 
 router.post('/add', async (req, res, next) => {
