@@ -37,13 +37,13 @@ const AddMeal = props =>{
       const data = {
         name: item.nazwa,
         count: count,
-        email: 'adam@gmail.com',
+        email: getEmail(),
         date: date,
         dayTime: dayTime
       }
       console.log(data)
       props.setVisible(!props.visible);   
-      fetch('http://192.168.0.24:3000/meal/add', {
+      fetch(getHost() +'/meal/add', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

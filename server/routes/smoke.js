@@ -14,20 +14,25 @@ router.get('/rodzaj/', async (req, res, next) => {
         req.query.email
       ])
       : await pool.query('select rodzaj,count(rodzaj) from palenie group by rodzaj order by count(rodzaj) desc limit 1').catch()
-  res.json(response.rows)
-})
+  if (response.rows.length)
+    res.json(response.rows)
+  else 
+    res.send([{
+      rodzaj: 'nie do określenia'
+    }])
+  })
 
-router.get('/type/stats', async (req, res, next) =>{
+router.get('/type/stats', async (req, res, next) => {
   let response =
-  req.query.email != null
-    ? await pool.query('select rodzaj,count(rodzaj) from palenie WHERE email = $1 group by rodzaj order by count(rodzaj) ', [
-      req.query.email
-    ])
-    : await pool.query('select rodzaj,count(rodzaj) from palenie group by rodzaj order by count(rodzaj)').catch()
+    req.query.email != null
+      ? await pool.query('select rodzaj,count(rodzaj) from palenie WHERE email = $1 group by rodzaj order by count(rodzaj) ', [
+        req.query.email
+      ])
+      : await pool.query('select rodzaj,count(rodzaj) from palenie group by rodzaj order by count(rodzaj)').catch()
   res.json(response.rows)
 })
 
-router.get('/costs', async (req,res,next)=>{
+router.get('/costs', async (req, res, next) => {
   let days = req.query.days != null ? req.query.days : '1000'
   let response =
     req.query.email != null
@@ -70,7 +75,13 @@ router.get('/sum/', async (req, res, next) => {
         "SELECT email,SUM(ilosc*cena_za_sztuke) FROM palenie WHERE dzien > current_date - $1*(interval '1 day') group by email",
         [days]
       )
-  res.json(response.rows)
+ if (response.rows.length)
+    res.json(response.rows)
+  else 
+    res.send([{
+      sum: 0
+    }])
+  
 })
 
 

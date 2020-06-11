@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View,ScrollView ,TextInput, TouchableOpacity } from 'react-native';
+
+import { getHost, getEmail } from '../ServerConnection';
+
 
 function GetData(props) {
     const [data, setData] = useState(null);
@@ -17,7 +20,7 @@ function GetData(props) {
     const NotePressed = async () => {
         if(text!=""){
         const data1 = {
-            email: 'adam@gmail.com',
+            email: getEmail(),
             type: 'd',
             nr: parseInt(Math.random() * 10000000 + 1000000),
             text: text
@@ -25,14 +28,14 @@ function GetData(props) {
         setText("");
 
         console.log(data1);
-        await fetch('http://192.168.0.24:3000/note/add', {
+        await fetch(getHost() + '/note/add', {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        fetch('http://192.168.0.24:3000/note?email=adam@gmail.com')
+        fetch(getHost() + '/note?email=' + getEmail())
             .then((response) => response.json())
             .then((data) =>
                 setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "," + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
@@ -41,7 +44,7 @@ function GetData(props) {
     }
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch('http://192.168.0.24:3000/note?email=adam@gmail.com');
+            const res = await fetch(getHost() +'/note?email='+getEmail())
             const data = await res.json();
 
             setData(data)

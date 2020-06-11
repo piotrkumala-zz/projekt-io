@@ -8,6 +8,8 @@ import {
 	Image,
 } from 'react-native';
 
+import { getHost, getEmail } from '../../ServerConnection';
+
 const SzlugButton = () => {
 	const [typ, setTyp] = useState('Normalny');
 	data = ([
@@ -34,14 +36,14 @@ const SzlugButton = () => {
 		console.log(data);
 		
 		const data1 = {
-			email: 'adam@gmail.com',
+			email: getEmail(),
 			day: new Date(Date.now()).toISOString().replace('T', ' ').replace('Z', ''),
 			count: 1,
 			price: priceMaping[typ],
 			type: typ,
 		};
 		console.log(data1);1.1
-		const res = await fetch('http://192.168.0.24:3000/smoke/add', {
+		const res = await fetch(getHost() + '/smoke/add?email=' + getEmail(), {
 			method: 'POST',
 			body: JSON.stringify(data1),
 			headers: {
