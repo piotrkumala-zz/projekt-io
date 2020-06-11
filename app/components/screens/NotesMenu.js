@@ -35,7 +35,6 @@ function GetData(props) {
                 'Content-Type': 'application/json'
             }
         });
-
         fetch(getHost() + '/note?email=' + getEmail())
             .then((response) => response.json())
             .then((data) =>

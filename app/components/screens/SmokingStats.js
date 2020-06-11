@@ -17,6 +17,7 @@ function GetData(props) {
 
     useEffect(() => {
         const getData = async () => {
+
             const res30 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=30');
             const data30 = await res30.json();
             const res7 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=7');
