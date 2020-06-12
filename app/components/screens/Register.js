@@ -1,5 +1,6 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { Dropdown } from 'react-native-material-dropdown';
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import LoginTitle from "../screen_components/Auth/LoginTitle";
 import MenuButton from "../screen_components/common/MenuButton";
@@ -35,11 +36,20 @@ function Login(props) {
   const [heightValue, heightOnChangeText] = React.useState("");
 
   // gender input
-  const genderDescription = "Płeć";
-  const [genderValue, genderOnChangeText] = React.useState("");
+	const [genderValue, setGenderValue] = useState('m');
+	data = ([
+		{
+			value: 'm'
+		},{
+			value: 'k'
+		}
+	]);
+
+	function handleGender(e) {
+		setGenderValue(e);
+	}
 
   // registerButton
-  // TODO actual registering
   const registerButtonHandler = () => {
 	  registerUser({
 		  email: emailValue,
@@ -81,12 +91,14 @@ function Login(props) {
           onChangeText={heightOnChangeText}
 		  secureTextEntry={false}
         />
-        <InputBox
-          description={genderDescription}
-          onChangeText={genderOnChangeText}
-		  secureTextEntry={false}
-        />
-
+		<TouchableOpacity style={styles.button}>
+			<Dropdown
+				value="m"
+				onChangeText={handleGender}
+				label="Płeć"
+				data={data}
+			/>
+		</TouchableOpacity>
         <MenuButton
           handler={registerButtonHandler}
           description={registerButtonDescription}
