@@ -4,7 +4,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import {Input, Button} from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { getHost, getEmail } from '../ServerConnection';
+import { getHost, getEmail, getToken } from '../ServerConnection';
 
 const AddProduct = props =>{
     const navigation = props.navigation;
@@ -40,11 +40,12 @@ const AddProduct = props =>{
             sugar:sugar
         }
         console.log(data)
-        const res = await fetch(getHost() + '/food/add?email=' + getEmail(), {
+        const res = await fetch(getHost() + '/food/add', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getToken()
             }            
         })
         const json = await res.json();

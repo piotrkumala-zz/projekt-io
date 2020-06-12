@@ -4,6 +4,7 @@ import { Button, Icon, Input } from 'react-native-elements';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Moment from 'moment/min/moment-with-locales'
 import RNPickerSelect from 'react-native-picker-select';
+import { getHost, getEmail, getToken } from '../../ServerConnection';
 
 const AddMeal = props =>{
     const [date, setDate] = useState(new Date());
@@ -47,7 +48,8 @@ const AddMeal = props =>{
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-access-token': getToken()
         }            
       })
   }

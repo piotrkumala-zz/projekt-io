@@ -8,7 +8,7 @@ import {
 	Image,
 } from 'react-native';
 
-import { getHost, getEmail } from '../../ServerConnection';
+import { getHost, getEmail, getToken } from '../../ServerConnection';
 
 const SzlugButton = () => {
 	const [typ, setTyp] = useState('Normalny');
@@ -47,7 +47,8 @@ const SzlugButton = () => {
 			method: 'POST',
 			body: JSON.stringify(data1),
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'x-access-token': getToken()
 			}
 		});
 	}
