@@ -4,7 +4,7 @@ var db = require('../db');
 const Auth = {
 	async verifyToken(req, res, next) {
 		console.log(req.path)
-		if(req.path === 'users' || req.path === '/users/login'){
+		if(req.path === '/users' || req.path === '/users/login'){
 			console.log('skip verify token')
 			next();
 		}
