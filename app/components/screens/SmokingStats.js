@@ -3,7 +3,7 @@ import {ActivityIndicator, StyleSheet, Text, View, Dimensions } from 'react-nati
 import { LineChart, PieChart, } from "react-native-chart-kit";
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { getHost, getEmail } from '../ServerConnection';
+import { getHost, getEmail, getToken } from '../ServerConnection';
 
 function GetData(props) {
     //definty could be done with just one server request. Most likle bould be better co calculate all stats client side
@@ -18,20 +18,44 @@ function GetData(props) {
     useEffect(() => {
         const getData = async () => {
 
-            const res30 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=30');
+            const res30 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=30', {
+                headers:{
+                    'x-access-token': getToken()
+                }
+            });
             const data30 = await res30.json();
-            const res7 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=7');
+            const res7 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=7', {
+                headers:{
+                    'x-access-token': getToken()
+                }
+            });
             const data7 = await res7.json();
-            const res1 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=1');
+            const res1 = await fetch(getHost() + '/smoke/sum?email=' + getEmail() + '&days=1',{
+                headers:{
+                    'x-access-token': getToken()
+                }
+            });
             const data1 = await res1.json();
 
-            const res = await fetch(getHost() + '/smoke/rodzaj?email=' + getEmail() + '');
+            const res = await fetch(getHost() + '/smoke/rodzaj?email=' + getEmail() + '', {
+                headers:{
+                    'x-access-token': getToken()
+                }
+            });
             const data = await res.json();
 
-            const typesDataRaw = await fetch(getHost() + '/smoke/type/stats?email=' + getEmail() + '');
+            const typesDataRaw = await fetch(getHost() + '/smoke/type/stats?email=' + getEmail() + '', {
+                headers:{
+                    'x-access-token': getToken()
+                }
+            });
             const typesData = await typesDataRaw.json().catch();
 
-            const chartDataRaw = await fetch(getHost() + '/smoke/costs?email=' + getEmail() + '&days=30');
+            const chartDataRaw = await fetch(getHost() + '/smoke/costs?email=' + getEmail() + '&days=30', {
+                headers:{
+                    'x-access-token': getToken()
+                }
+            });
             const chartData = await chartDataRaw.json().catch();
             console.log(chartData)
             console.log(chartData.map(x => x.dzien.split('T')[0]))

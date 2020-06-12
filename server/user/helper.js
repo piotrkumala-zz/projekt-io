@@ -18,7 +18,7 @@ generateToken(email) {
 	const token = jwt.sign({
 		userEmail: email
 	},
-		"pleasedontreadthis", { expiresIn: '7d' }
+		process.env.SECRET || "pleasedontreadthis", { expiresIn: '7d' }
 	);
 	return token;
 	}

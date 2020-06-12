@@ -13,15 +13,13 @@ var listusers = require('./routes/listusers')
 var bodyParser = require('body-parser');
 
 var foodRouter = require('./routes/food');
-var recipeRouter = require('./routes/recipe');
-var portionRouter = require('./routes/portion');
 var mealRouter = require('./routes/meal')
 var smokeRouter = require('./routes/smoke')
 
 var noteRouter = require('./routes/note')
 
 var app = express();
-
+app.use(Auth.verifyToken);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,10 +37,6 @@ app.listen(3000);
 console.log('app running on port ', 3000);
 
 app.use('/food', foodRouter);
-
-app.use('/recipe', recipeRouter);
-
-app.use('/portion', portionRouter);
 
 app.use('/meal', mealRouter);
 

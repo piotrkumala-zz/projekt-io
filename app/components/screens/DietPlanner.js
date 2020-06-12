@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Icon} from 'react-native-elements';
 
-import { getHost, getEmail } from '../ServerConnection';
+import { getHost, getEmail, getToken } from '../ServerConnection';
 
 const DietPlaner = props =>{
     const navigation = props.navigation;
@@ -21,7 +21,11 @@ const DietPlaner = props =>{
     const [selectedDay, setSelectedDay] = useState('');
     useEffect(()=>{
         const getData = async () =>{
-            const res = await fetch(getHost() + '/meal/week?email=' + getEmail());
+            const res = await fetch(getHost() + '/meal/week',{
+                headers:{
+                    'x-access-token': getToken()
+                }
+            });
             const rawData = await res.json();
             const data = rawData.map(x=> {
                 return {

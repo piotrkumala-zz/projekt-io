@@ -4,7 +4,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { SearchBar, Icon, Button } from 'react-native-elements';
 import AddMeal from '../screen_components/DietTables/AddMeal';
 
-import { getHost, getEmail } from '../ServerConnection';
+import { getHost, getEmail, getToken } from '../ServerConnection';
 
 const DietTables = props =>{
     const navigation = props.navigation;
@@ -16,7 +16,12 @@ const DietTables = props =>{
 
     useEffect(()=>{
         const getData = async () =>{
-            const res = await fetch(getEmail() + '/food');
+            const res = await fetch(getHost() + '/food', {
+                headers:
+                {
+                    'x-access-token' : getToken()
+                }
+            });
             const data = await res.json();
             setOriginalData(data)
             setData(data)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View,ScrollView ,TextInput, TouchableOpacity } from 'react-native';
 
-import { getHost, getEmail } from '../ServerConnection';
+import { getHost, getEmail, getToken } from '../ServerConnection';
 
 
 function GetData(props) {
@@ -32,10 +32,15 @@ function GetData(props) {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getToken()
             }
         });
-        fetch(getHost() + '/note?email=' + getEmail())
+        fetch(getHost() + '/note?email=' + getEmail(),{
+            headers:{
+                'x-access-token': getToken()
+            }
+        })
             .then((response) => response.json())
             .then((data) =>
                 setlistItems(data.map((nnote) => <Text onPress={() => deleteNote(nnote["nr_notatki"], nnote["rodzaj"])} style={styles.note} key={nnote["nr_notatki"] + "," + nnote["rodzaj"]}>{nnote["tekst"]}{"\n"}</Text>))
@@ -44,7 +49,11 @@ function GetData(props) {
     }
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch(getHost() +'/note?email='+getEmail())
+            const res = await fetch(getHost() +'/note?email='+getEmail(),{
+                headers:{
+                    'x-access-token': getToken()
+                }
+            })
             const data = await res.json();
 
             setData(data)
