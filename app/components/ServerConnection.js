@@ -23,7 +23,7 @@ export const isUserLoggedIn = () => {
 	return userToken !== "";
 }
 
-export const loginUser = (email, password) => {
+export const loginUser = (email, password, errorMessagePopup) => {
 	var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -43,7 +43,11 @@ export const loginUser = (email, password) => {
 		.then(result => {
 			console.log(result);
 			if (result.token)
-				userToken = result.token})
+				userToken = result.token
+			else 
+				errorMessagePopup(result.message)
+		}
+		)
 		.catch(error => console.log('error', error));
 
 	userEmail = email;
