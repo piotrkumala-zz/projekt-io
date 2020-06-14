@@ -7,10 +7,28 @@
 1. Maciej Domagalski
 1. Tomasz Praszkiewicz
 1. Dawid Górka
-
+### Repozytorium kodu:
+https://github.com/piotrkumala/projekt-io
 
 
 ## Dokumentacja deweloperska
+
+### Narzędzia użyte podczas developmentu:
+- IDE:
+    1. VS Code/Vim lub dowolny inny edytor tekstu
+    1. Node.js, npm lub yarn
+    1. expo-cli
+- repozytorium:
+    1. git
+    1. GitHub
+- UI:
+    1. Balsamiq Wireframes
+- zarządznie projektem:
+    1. VisualParadigmOnline
+- dokumentacja:
+    1. Markdown
+- biblioteka testowa:
+    1. jest
 
 ### Rozwiązania zastosowane w aplikacji:
 1. Część backendowa jest napisana we frameworku express do node.js
