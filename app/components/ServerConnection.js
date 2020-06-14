@@ -86,10 +86,19 @@ export const registerUser = (userData) => {
 	fetch(getHost() + "/users", requestOptions)
 		.then(response => response.json())
 		.then(result => {
-			console.log(result);
-			if (result.token)
-				res = result.token})
-		.catch(error => console.log('error', error));
+			if (result.token) {
+				res = result.token
+				userData.setResultMessage("Rejestracja udana");
+			}
+			else {
+				error_message = result.message
+				userData.setResultMessage(error_message);
+			}
+		})
+		.catch(error => { 
+			console.log('error', error);
+			error_message = error;
+		});
 
 	console.log(res)
 }
