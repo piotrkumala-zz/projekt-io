@@ -26,7 +26,12 @@ function Login(props) {
 
   // loginButton
   const loginButtonHandler = () => {
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     loginUser(emailValue, passwordValue);
+    sleep(2000);
     updateApp();
   };
   const loginButtonDescription = "Zaloguj się";
