@@ -23,7 +23,7 @@ export const isUserLoggedIn = () => {
 	return userToken !== "";
 }
 
-export const loginUser = (email, password) => {
+export const loginUser = (email, password, errorMessagePopup) => {
 	var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -43,7 +43,11 @@ export const loginUser = (email, password) => {
 		.then(result => {
 			console.log(result);
 			if (result.token)
-				userToken = result.token})
+				userToken = result.token
+			else 
+				errorMessagePopup(result.message)
+		}
+		)
 		.catch(error => console.log('error', error));
 
 	userEmail = email;
@@ -86,10 +90,19 @@ export const registerUser = (userData) => {
 	fetch(getHost() + "/users", requestOptions)
 		.then(response => response.json())
 		.then(result => {
-			console.log(result);
-			if (result.token)
-				res = result.token})
-		.catch(error => console.log('error', error));
+			if (result.token) {
+				res = result.token
+				userData.setResultMessage("Rejestracja udana");
+			}
+			else {
+				error_message = result.message
+				userData.setResultMessage(error_message);
+			}
+		})
+		.catch(error => { 
+			console.log('error', error);
+			error_message = error;
+		});
 
 	console.log(res)
 }

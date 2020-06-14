@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import Modal from "react-native-modal";
 
 import LoginTitle from "../screen_components/Auth/LoginTitle";
 import MenuButton from "../screen_components/common/MenuButton";
@@ -38,6 +39,17 @@ function Login(props) {
   const genderDescription = "Płeć";
   const [genderValue, genderOnChangeText] = React.useState("");
 
+
+  const [popupValue, setPopupVisible] = React.useState(false);
+  const changePopupValue = () => {
+	  setPopupVisible(!popupValue);
+  };
+  const [popupMessage, setPopupMessage] = React.useState("");
+  const setPopupMessageAndTriggerPopup = (param) => {
+	  setPopupVisible(true);
+	  setPopupMessage(param);
+  }
+
   // registerButton
   // TODO actual registering
   const registerButtonHandler = () => {
@@ -47,13 +59,24 @@ function Login(props) {
 		  lastName: lastNameValue,
 		  height: heightValue,
 		  gender: genderValue,
-		  password: passwordValue
+		  password: passwordValue,
+		  setResultMessage: setPopupMessageAndTriggerPopup,
 	  });
   };
   const registerButtonDescription = "Zarejestruj się";
 
+
   return (
+	  <View>
+	  <Modal isVisible={popupValue}>
+	  <View style={styles.content}>
+	  <Text style={styles.contentTitle}>{popupMessage}</Text>
+	  <Button testID={'close-button'} onPress={changePopupValue} title="Zamkij" />
+	  </View>
+	  </Modal>
+
     <View style={styles.container}>
+
       <View style={styles.buttonsContainer} keyboardShouldPersistTaps='always'>
 		<LoginTitle description={Title}>"</LoginTitle>
         <InputBox
@@ -93,6 +116,7 @@ function Login(props) {
         />
       </View>
     </View>
+	  </View>
   );
 }
 
@@ -111,6 +135,19 @@ const styles = StyleSheet.create({
   button: {
     width: 100,
   },
+  content: {
+    backgroundColor: 'white',
+    padding: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  contentTitle: {
+    fontSize: 20,
+    marginBottom: 12,
+  },
+
 });
 
 export default Login;
